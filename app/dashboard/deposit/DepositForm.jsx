@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { fetchAssets, uploadProofToBlob } from "@/lib/depositAction";
+import { fetchAssets, uploadProofToBlob } from "@/actions/depositActions";
 
 export default function DepositForm() {
   const [assets, setAssets] = useState([]);
