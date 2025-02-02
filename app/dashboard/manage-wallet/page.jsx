@@ -13,6 +13,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { ManageWallet } from "@/components/manage-wallet"
 
 export default function Page() {
   return (
@@ -44,7 +45,7 @@ export default function Page() {
           <p>Manage Where your money goes to</p>
           </div>
           <div>
-
+            <ManageWallet />
           </div>
         </div>
       </SidebarInset>
