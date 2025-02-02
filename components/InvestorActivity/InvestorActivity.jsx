@@ -123,7 +123,6 @@ const InvestorsActivity = () => {
                           <TableHead className="text-blue-100">Name</TableHead>
                           <TableHead className="text-blue-100">Date</TableHead>
                           <TableHead className="text-blue-100">Amount</TableHead>
-                          <TableHead className="text-blue-100">Currency</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
