@@ -105,7 +105,7 @@ const data = {
     {
       title: "Manage Assets",
       icon: Wallet,
-      url: "/dashboard/wallet",
+      url: "/dashboard/manage-wallet",
     },
     {
       title: "Manage KYC",
