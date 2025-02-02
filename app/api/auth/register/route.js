@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
 import { connectToDB } from "@/lib/connectDB";
-import User from "@/model/User";
+import User from "@/models/User";
 import { revalidatePath } from "next/cache";
 
 export async function POST(req) {
