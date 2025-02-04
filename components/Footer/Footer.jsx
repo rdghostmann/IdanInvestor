@@ -1,5 +1,5 @@
 import Link from "next/link";
-import LogoText from "../../public/onvestJar.svg";
+import LogoText from "../../public/investjartext.svg";
 import Image from "next/image";
 
 const sections = [
