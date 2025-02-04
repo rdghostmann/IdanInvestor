@@ -14,6 +14,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { ManageWallet } from "../_components/ManageWallet/ManageWallet";
+import { CryptoList } from "@/components/CryptoList/CryptoList";
 
 
 export default function Page() {
@@ -44,6 +45,7 @@ export default function Page() {
           <div className="text-sm/5">
             <p>Manage Where your money goes to</p>
           </div>
+          <CryptoList />
           <ManageWallet />
         </div>
       </SidebarInset>

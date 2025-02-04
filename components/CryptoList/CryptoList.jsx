@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { CryptoCard } from "../CryptoCard/CryptoCard"
+import { Input } from "../ui/input"
 
 
 
