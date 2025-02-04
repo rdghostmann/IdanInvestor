@@ -7,10 +7,12 @@ import {
   BookOpen,
   Bot,
   ChartNoAxesCombined,
+  CircleDollarSign,
   Coins,
   Command,
   CreditCard,
   Frame,
+  HandCoins,
   IdCard,
   Landmark,
   LayoutDashboard,
@@ -38,6 +40,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+
 
 const data = {
   user: {
@@ -74,7 +77,7 @@ const data = {
     },
     {
       title: "Make Deposit",
-      icon: ArrowDownFromLine,
+      icon: HandCoins,
       url: "/dashboard/deposit",
     },
     {
@@ -84,7 +87,7 @@ const data = {
     },
     {
       title: "Investment",
-      icon: Coins,
+      icon: CircleDollarSign,
       url: "/dashboard/investment",
     },
     {
