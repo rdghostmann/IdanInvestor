@@ -81,7 +81,7 @@ const cryptocurrencies = [
   },
 ]
 
-export const CryptoList = () => {
+const CryptoList = () => {
   const [searchTerm, setSearchTerm] = useState("")
 
   const filteredCryptos = cryptocurrencies.filter((crypto) =>
@@ -109,4 +109,6 @@ export const CryptoList = () => {
     </div>
   )
 }
+
+export default CryptoList;
 
