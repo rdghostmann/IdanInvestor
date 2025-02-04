@@ -85,7 +85,7 @@ const ROIPlan = () => {
         </div>
 
         {/* Investment Calculator */}
-        <Card className="bg-[#FFECD1] text-[#2C1810]">
+        <Card className="bg-blue-200 text-blue-800">
           <CardContent className="p-6">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               <div className="lg:col-span-3 space-y-6">
@@ -99,8 +99,8 @@ const ROIPlan = () => {
                         variant={selectedPlan.type === plan.type ? "default" : "outline"}
                         className={
                           selectedPlan.type === plan.type
-                            ? "bg-[#2C1810] text-white"
-                            : "border-[#2C1810] text-[#2C1810]"
+                            ? "bg-blue-800 text-white"
+                            : "border-blue-800 text-blue-800"
                         }
                       >
                         {plan.type.charAt(0).toUpperCase() + plan.type.slice(1)} Plan
@@ -116,7 +116,7 @@ const ROIPlan = () => {
                       type="number"
                       value={amount}
                       onChange={(e) => setAmount(Number(e.target.value))}
-                      className="bg-white border-[#2C1810]"
+                      className="bg-white border-blue-800"
                     />
                     <span>USD</span>
                   </div>
@@ -142,7 +142,7 @@ const ROIPlan = () => {
                     <div className="text-sm">Total Profit</div>
                     <div className="text-2xl font-bold">{totalProfit.toFixed(2)} USD</div>
                   </div>
-                  <Button className="w-full bg-[#FFD700] text-black hover:bg-[#FFD700]/90">
+                  <Button className="w-full bg-indigo-600 text-black hover:bg-indigo-800/90">
                     Invest Now
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>

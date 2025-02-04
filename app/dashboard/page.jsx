@@ -13,8 +13,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import Watchlist from "./_components/WatchList/WatchList";
-import { ArrowUpRight } from "lucide-react";
+
 
 export default function Page() {
   return (
@@ -46,9 +45,9 @@ export default function Page() {
             {/* Portfolio Overview */}
             <div className="flex justify-between bg-white shadow-md p-4 rounded-lg">
               <div className="border-r-2 flex-1 p-2 w-1/2 lg:px-2">
-                <p className="text-sm/8 text-gray-500">WALLET BALANCE</p>
+                <p className="text-sm/8 text-gray-500">ACCOUNT BALANCE</p>
                 <div className="flex items-center gap-2">
-                  <h2 className="text-2xl font-bold md:text-3xl">$5,260</h2>
+                  <h2 className="text-2xl font-bold md:text-3xl">$1,260</h2>
                   {/* <span className="flex items-center text-sm text-green-500">
                 <ArrowUpRight className="h-4 w-4" />
                 1.25%
@@ -56,7 +55,7 @@ export default function Page() {
                 </div>
               </div>
               <div className="flex-1 p-2 w-1/2 lg:px-2">
-                <p className="text-sm/8 text-gray-500">VOLUME (24H)</p>
+                <p className="text-sm/8 text-gray-500">TOTAL PROFIT</p>
                 <div className="flex items-center gap-2">
                   <h2 className="text-2xl font-bold md:text-3xl">$7,472</h2>
                   {/* <span className="flex items-center text-sm text-green-500">

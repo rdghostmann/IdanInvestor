@@ -1,17 +1,20 @@
 import { CircleArrowRight, Files, Settings } from "lucide-react";
 
-export default function page(){
+export default function page() {
   return (
     <section className="py-10 px-5">
       <div className="container flex flex-col gap-28">
         <div className="flex flex-col gap-7">
           <h1 className="text-4xl font-semibold lg:text-7xl">
-            Bringing the power of software to everyone
+            Stable Earnings
+            With a guaranteed
+            floating rate
           </h1>
           <p className="max-w-xl text-lg">
-            Stacker makes it easy to build customer portals, CRMs, internal
-            tools, and other business applications for your team. In minutes,
-            not months.
+            There has been always a demand for quality investment services. In an attempt to satisfy this demand, the idea of creating an Riovest company came up. Riovest is a modern investment company that combines the most advanced projects in its work.
+          </p>
+          <p className="max-w-xl text-lg">
+            We worked hard to develop a multifunctional cryptocurrency investment space where people from the whole globe can earn on digital currencies.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2">

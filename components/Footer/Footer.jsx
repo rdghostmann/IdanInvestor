@@ -1,3 +1,7 @@
+import Link from "next/link";
+import LogoText from "../../public/onvestJar.svg";
+import Image from "next/image";
+
 const sections = [
   {
     title: "Product",
@@ -6,8 +10,7 @@ const sections = [
       { name: "Pricing", href: "#" },
       { name: "Marketplace", href: "#" },
       { name: "Features", href: "#" },
-      { name: "Integrations", href: "#" },
-      { name: "Pricing", href: "#" },
+      { name: "Investment Plans", href: "#" },
     ],
   },
   {
@@ -15,8 +18,8 @@ const sections = [
     links: [
       { name: "About", href: "#" },
       { name: "Team", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Careers", href: "#" },
+      // { name: "Blog", href: "#" },
+      // { name: "Careers", href: "#" },
       { name: "Contact", href: "#" },
       { name: "Privacy", href: "#" },
     ],
@@ -25,7 +28,7 @@ const sections = [
     title: "Resources",
     links: [
       { name: "Help", href: "#" },
-      { name: "Sales", href: "#" },
+      { name: "Legal", href: "#" },
       { name: "Advertise", href: "#" },
     ],
   },
@@ -47,16 +50,16 @@ const Footer = () => {
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 mb-8 lg:mb-0">
               <div className="flex items-center gap-2 lg:justify-start">
-                <a href="https://shadcnblocks.com">
-                  <img
-                    src="https://shadcnblocks.com/images/block/block-1.svg"
-                    alt="blocks for shadcn/ui"
+                <Link href="https://shadcnblocks.com">
+                  <Image
+                    src={LogoText}
+                    alt="Logo Text"
                     className="h-10"
                   />
-                </a>
-                <p className="text-xl font-semibold">Shadcnblocks.com</p>
+                </Link>
+                <p className="text-xl font-semibold">InvestJar</p>
               </div>
-              <p className="mt-4 font-bold">Components made easy.</p>
+              <p className="mt-4 font-bold">Maximize Profit</p>
             </div>
             {sections.map((section, sectionIdx) => (
               <div key={sectionIdx}>
@@ -75,7 +78,7 @@ const Footer = () => {
             ))}
           </div>
           <div className="mt-24 flex flex-col justify-between gap-4 border-t pt-8 text-sm font-medium text-muted-foreground md:flex-row md:items-center">
-            <p>© 2024 Copyright. All rights reserved.</p>
+            <p>InvestJar © 2024 Copyright. All rights reserved.</p>
             <ul className="flex gap-4">
               <li className="underline hover:text-primary">
                 <a href="#"> Terms and Conditions</a>

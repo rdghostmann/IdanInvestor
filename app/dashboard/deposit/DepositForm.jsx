@@ -1,16 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { fetchAssets, uploadProofToBlob } from "@/actions/depositActions";
+import { fetchAssets } from "@/lib/depositAction";
+import { upload } from '@vercel/blob/client';
 
 export default function DepositForm() {
   const [assets, setAssets] = useState([]);
   const [selectedAsset, setSelectedAsset] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
   const [amount, setAmount] = useState("");
-  const [proofFile, setProofFile] = useState(null);
-  const [proofUrl, setProofUrl] = useState("");
+  // const [proofFile, setProofFile] = useState(null);
+  // const [proofUrl, setProofUrl] = useState("");
+  const inputFileRef = useRef(null);
+  const [proofUrl, setProofUrl] = useState(null);
+
 
   useEffect(() => {
     async function loadAssets() {
@@ -21,27 +25,34 @@ export default function DepositForm() {
   }, []);
 
   const handleAssetChange = (e) => {
-    const selected = assets.find((a) => a.name === e.target.value);
+    const selected = assets.find((asset) => asset.name === e.target.value);
     setSelectedAsset(selected?.name || "");
     setWalletAddress(selected?.address || "");
   };
 
   const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    setProofFile(file);
+    e.preventDefault();
 
-    const uploadedUrl = await uploadProofToBlob(file);
-    setProofUrl(uploadedUrl);
+    const file = inputFileRef.current.files[0];
+    const newBlob = await upload(file.name, file, {
+      access: 'public',
+      handleUploadUrl: '/api/upload',
+    });
+
+    setProofUrl(newBlob);
   };
 
   return (
-    <form className="mb-2 bg-white shadow-md p-4 rounded-lg">
+    <form onSubmit={handleFileUpload}
+    
+    className="mb-2 bg-white shadow-md p-4 rounded-lg">
       <div className="space-y-4">
         {/* Asset Selection */}
         <div className="bg-gray-50 p-4 rounded-lg">
           <label htmlFor="Asset_Name" className="text-sm text-gray-500">Select Crypto to Deposit:</label>
           <select 
             id="Asset_Name"
+            name="Asset_Name"
             value={selectedAsset}
             onChange={handleAssetChange}
             className="bg-transparent p-2 rounded w-full"
@@ -58,6 +69,7 @@ export default function DepositForm() {
           <label htmlFor="deposit_Amount" className="text-sm text-gray-500">Amount:</label>
           <input 
             id="deposit_Amount"
+            name="deposit_Amount"
             type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
@@ -71,6 +83,7 @@ export default function DepositForm() {
           <label htmlFor="Asset_Address" className="text-sm text-gray-500">Wallet Address:</label>
           <input 
             id="Asset_Address"
+            name="Asset_Address"
             type="text"
             value={walletAddress}
             readOnly
@@ -99,10 +112,11 @@ export default function DepositForm() {
           <input 
             id="deposit_Proof"
             type="file"
-            onChange={handleFileUpload}
+            name="file"
+            ref={inputFileRef}
             className="bg-transparent p-2 rounded w-full"
           />
-          {proofUrl && <p className="text-sm text-green-500">Proof uploaded successfully</p>}
+          {proofUrl ? ( <img src={proofUrl.url} alt={proofUrl.url} style={{width:"200", height:"auto"}} />) : (<p className="text-sm text-green-500">Proof uploaded successfully</p>)}
         </div>
       </div>
 
