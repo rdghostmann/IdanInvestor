@@ -10,11 +10,8 @@ export default function DepositForm() {
   const [selectedAsset, setSelectedAsset] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
   const [amount, setAmount] = useState("");
-  // const [proofFile, setProofFile] = useState(null);
-  // const [proofUrl, setProofUrl] = useState("");
   const inputFileRef = useRef(null);
   const [proofUrl, setProofUrl] = useState(null);
-
 
   useEffect(() => {
     async function loadAssets() {
@@ -26,26 +23,23 @@ export default function DepositForm() {
 
   const handleAssetChange = (e) => {
     const selected = assets.find((asset) => asset.name === e.target.value);
+    console.log("Selected Asset:", selected); // Debugging line
     setSelectedAsset(selected?.name || "");
     setWalletAddress(selected?.address || "");
   };
 
   const handleFileUpload = async (e) => {
     e.preventDefault();
-
     const file = inputFileRef.current.files[0];
     const newBlob = await upload(file.name, file, {
       access: 'public',
       handleUploadUrl: '/api/upload',
     });
-
     setProofUrl(newBlob);
   };
 
   return (
-    <form onSubmit={handleFileUpload}
-    
-    className="mb-2 bg-white shadow-md p-4 rounded-lg">
+    <form onSubmit={handleFileUpload} className="mb-2 bg-white shadow-md p-4 rounded-lg">
       <div className="space-y-4">
         {/* Asset Selection */}
         <div className="bg-gray-50 p-4 rounded-lg">
@@ -116,7 +110,11 @@ export default function DepositForm() {
             ref={inputFileRef}
             className="bg-transparent p-2 rounded w-full"
           />
-          {proofUrl ? ( <img src={proofUrl.url} alt={proofUrl.url} style={{width:"200", height:"auto"}} />) : (<p className="text-sm text-green-500">Proof uploaded successfully</p>)}
+          {proofUrl ? ( 
+            <img src={proofUrl.url} alt={proofUrl.url} style={{width:"200", height:"auto"}} />
+          ) : (
+            <p className="text-sm text-green-500">Proof uploaded successfully</p>
+          )}
         </div>
       </div>
 
@@ -126,4 +124,4 @@ export default function DepositForm() {
       </button>
     </form>
   );
-}
+                                 }
