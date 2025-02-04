@@ -1,4 +1,3 @@
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -124,7 +123,6 @@ const InvestorsActivity = () => {
                           <TableHead className="text-blue-100">Name</TableHead>
                           <TableHead className="text-blue-100">Date</TableHead>
                           <TableHead className="text-blue-100">Amount</TableHead>
-                          <TableHead className="text-blue-100">Currency</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
@@ -140,7 +138,6 @@ const InvestorsActivity = () => {
                             </TableCell>
                             <TableCell className="text-blue-100">{transaction.date}</TableCell>
                             <TableCell className="text-blue-100">${transaction.amount.toLocaleString()}</TableCell>
-                            <TableCell className="text-blue-100">{transaction.currency}</TableCell>
                           </TableRow>
                         ))}
                       </TableBody>

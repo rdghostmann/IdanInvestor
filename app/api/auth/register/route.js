@@ -1,6 +1,10 @@
 import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
 import { connectToDB } from "@/lib/connectDB";
+<<<<<<< HEAD
+=======
+import User from "@/models/User";
+>>>>>>> fe0d724dda18327d7901e4c41299fcae34f0d95f
 import { revalidatePath } from "next/cache";
 import User from "@/models/User";
 
