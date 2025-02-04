@@ -26,7 +26,9 @@ const Hero1 = () => {
               By leveraging insights from our network of industry insiders, you'll know exactly when to buy to maximize profit and exactly when to sell to avoid losses
             </p>
             <div className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
+              <Link href="/register">
               <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-500">Get Started</Button>
+              </Link>
               <Button variant="outline" className="w-full sm:w-auto">
                 Learn More
                 <ArrowDownRight className="ml-2 size-4" />
