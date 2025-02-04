@@ -8,11 +8,10 @@ import InvestorsActivity from "@/components/InvestorActivity/InvestorActivity";
 import Hero1 from "@/components/Jumbotron/Jumbotron2";
 import LogoClouds from "@/components/LogoClouds/LogoClouds";
 import OurAmazingFeatures from "@/components/OurAmazingFeatures/OurAmazingFeatures";
+import OurAmazingFeatures2 from "@/components/OurAmazingFeatures/OurAmazingFeatures2";
 import Stats from "@/components/OurStats/Stats";
 import ROIPlan from "@/components/ROIPlan/ROIPlan";
-import { connectToDB } from "@/lib/connectDB";
-import User from "@/models/User";
-import bcrypt from "bcrypt";
+
 
 
 export default async function Home() {
@@ -24,7 +23,8 @@ export default async function Home() {
       <LogoClouds />
       <Stats />
       <AboutInvestJar />
-      <OurAmazingFeatures />
+      <OurAmazingFeatures2 />
+      {/* <OurAmazingFeatures /> */}
       <HowItWorks />
       <ROIPlan />
       <CallToAction />

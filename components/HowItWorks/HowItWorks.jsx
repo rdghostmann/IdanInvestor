@@ -2,55 +2,42 @@ import React from 'react'
 import Link from "next/link"
 import Profit from "../../public/profit.jpg"
 import Image from "next/image"
+import waterbluebg from "../../public/image_fx_.jpg"
 const HowItWorks = () => {
-  // const steps = [
-  //   {
-  //     number: "01",
-  //     title: "Create Your Wallet",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos consectetur tidio.",
-  //   },
-  //   {
-  //     number: "02",
-  //     title: "Make Payment",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos consectetur tidio.",
-  //   },
-  //   {
-  //     number: "03",
-  //     title: "Buy & Sell Coins",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos consectetur tidio.",
-  //   },
-  // ]
+
   return (
-    <section className="bg-gray px-4 py-16 md:px-6 lg:px-8">
+    <section className="relative px-4 py-16 md:px-6 lg:px-8">
+     <Image
+     src={waterbluebg}
+     alt='waterbluemark'
+     style={{
+      width: '100%',
+      height: "100%"
+     }}
+     className='absolute -z-10 top-0 left-0 bg-cover bg-no-repeat opacity-50'
+     priority
+     quality={100}
+     
+     />
+     
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-12 text-center">
           <h3 className="mb-2 text-base text-blue-600">Get to Know</h3>
           <h2 className="mb-6 text-3xl font-bold text-indigo-900 md:text-4xl">How We Work</h2>
           <p className="mx-auto max-w-2xl text-gray-600">
-            Follow these siple steps and make profit
+            Follow these simple steps and make profit
           </p>
         </div>
 
-        {/* Steps Grid */}
-        {/* <div className="grid gap-8 md:grid-cols-3 md:gap-12">
-          {steps.map((step, index) => (
-            <div key={index} className="flex flex-col items-start md:items-center md:text-center">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white text-xl font-bold text-indigo-900 shadow-sm">
-                {step.number}
-              </div>
-              <h3 className="mb-2 text-xl font-bold text-indigo-900">{step.title}</h3>
-              <p className="text-gray-600">{step.description}</p>
-            </div>
-          ))}
-        </div> */}
-        <section className="text-gray-600">
+  
+        <section className="text-gray-700">
           <div className="container px-5 mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <div className="flex relative pb-12">
                   <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
-                    <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    <div className="h-full w-1 bg-gray-500 pointer-events-none"></div>
                   </div>
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-900 inline-flex items-center justify-center text-white relative z-10">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
@@ -66,7 +53,7 @@ const HowItWorks = () => {
 
                 <div className="flex relative pb-12">
                   <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
-                    <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    <div className="h-full w-1 bg-gray-500 pointer-events-none"></div>
                   </div>
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-900 inline-flex items-center justify-center text-white relative z-10">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">

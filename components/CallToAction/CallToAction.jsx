@@ -1,10 +1,10 @@
-import React from 'react'
-import { Button } from '../ui/button'
-import { ArrowRight, MessageSquare, Phone } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { Phone, MessageSquare, ArrowRight } from "lucide-react"
+import Image from "next/image"
 
-const CallToAction = () => {
+export default function CallToAction() {
   return (
-    <section className="py-16">
+    <section className="py-16 bg-black w-full">
       <div className="container mx-auto px-4">
         <div className="relative isolate bg-gray-900 rounded-2xl overflow-hidden">
         <svg
@@ -53,4 +53,6 @@ const CallToAction = () => {
   )
 }
 
-export default CallToAction
+
+
+              

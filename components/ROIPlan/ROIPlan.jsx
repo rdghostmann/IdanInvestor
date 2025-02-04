@@ -16,7 +16,7 @@ const plans = [
   { type: "bronze", roi: 50, minInvest: 20, maxInvest: 100, medal: 3 },
 ]
 
-const ROIPlan = () => {
+export default function ROIPlan() {
   const [selectedPlan, setSelectedPlan] = useState(plans[0])
   const [amount, setAmount] = useState(selectedPlan.minInvest)
 
@@ -33,7 +33,7 @@ const ROIPlan = () => {
   const totalProfit = dailyProfit * 30
 
   return (
-    <div className="w-full px-4 py-12 bg-white">
+    <div className="w-full px-4 py-12 bg-slate-200">
       <div className="container mx-auto">
         {/* Investment Plans */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -41,15 +41,15 @@ const ROIPlan = () => {
             <Card
               key={plan.type}
               className={`relative overflow-hidden ${plan.type === "gold"
-                ? "bg-[#FFD700]/10 border-[#FFD700]"
+                ? "bg-[#FFD700]/10 bg-gradient-to-r from-[#FFD700] to-[#B8860B] text-black"
                 : plan.type === "silver"
-                  ? "bg-[#C0C0C0]/10 border-[#C0C0C0]"
-                  : "bg-[#CD7F32]/10 border-[#CD7F32]"
+                  ? "bg-[#C0C0C0]/10 bg-gradient-to-r from-[#C0C0C0] to-[#A9A9A9]"
+                  : "bg-gradient-to-r from-[#CD7F32] to-[#8B4513] border-[#CD7F32]"
                 } border-2`}
             >
               <CardHeader className="flex items-center pb-2">
                 <div className={`border-4 ${plan.type === "gold"
-                  ? "bg-[#FFD700]/10 border-[#FFD700]"
+                  ? "bg-[#FFD700]/1 border-[#FFD700]"
                   : plan.type === "silver"
                     ? "bg-[#C0C0C0]/10 border-[#C0C0C0]"
                     : "bg-[#CD7F32]/10 border-[#CD7F32]"
@@ -68,7 +68,7 @@ const ROIPlan = () => {
                 <div className="text-4xl font-bold mb-2">
                   {plan.roi}% <span className="text-sm">ROI</span>
                 </div>
-                <p className="text-sm text-gray-400 mb-4">Daily for 30 Days</p>
+                <p className="text-sm text-white mb-4">Daily for 30 Days</p>
                 <div className="bg-black/20 rounded-lg p-4">
                   <div className="flex justify-between text-sm mb-2">
                     <span>Min. Invest</span>
@@ -85,7 +85,7 @@ const ROIPlan = () => {
         </div>
 
         {/* Investment Calculator */}
-        <Card className="bg-blue-200 text-blue-800">
+        <Card className="bg-[#000000] text-white">
           <CardContent className="p-6">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               <div className="lg:col-span-3 space-y-6">
@@ -99,8 +99,8 @@ const ROIPlan = () => {
                         variant={selectedPlan.type === plan.type ? "default" : "outline"}
                         className={
                           selectedPlan.type === plan.type
-                            ? "bg-blue-800 text-white"
-                            : "border-blue-800 text-blue-800"
+                            ? "bg-gradient-to-br from-[#07071a] to-[#2c0323]  text-white"
+                            : "border-[#2C1810] text-[#2C1810]"
                         }
                       >
                         {plan.type.charAt(0).toUpperCase() + plan.type.slice(1)} Plan
@@ -116,7 +116,7 @@ const ROIPlan = () => {
                       type="number"
                       value={amount}
                       onChange={(e) => setAmount(Number(e.target.value))}
-                      className="bg-white border-blue-800"
+                      className="bg-white border-[#2C1810]"
                     />
                     <span>USD</span>
                   </div>
@@ -132,7 +132,7 @@ const ROIPlan = () => {
                 </div>
               </div>
 
-              <div className="bg-[#2C1810] text-white p-6 rounded-lg">
+              <div className="bg-gradient-to-br from-[#07071a] to-[#2c0323]  text-white p-6 rounded-lg">
                 <div className="space-y-4">
                   <div>
                     <div className="text-sm">Daily Profit</div>
@@ -142,7 +142,7 @@ const ROIPlan = () => {
                     <div className="text-sm">Total Profit</div>
                     <div className="text-2xl font-bold">{totalProfit.toFixed(2)} USD</div>
                   </div>
-                  <Button className="w-full bg-indigo-600 text-black hover:bg-indigo-800/90">
+                  <Button className="w-full bg-[#686762] text-black hover:bg-[#FFD700]/90">
                     Invest Now
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -156,6 +156,4 @@ const ROIPlan = () => {
     </div>
   )
 }
-
-export default ROIPlan
 

@@ -22,8 +22,7 @@ const FAQ = () => {
         {/* Right side - Content */}
         <div className="space-y-6">
           <div className="md:text-left space-y-4">
-            <p className="text-xl text-blue-600">If you have any questions</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-blue-600">We Have Answers</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-indigo-900">We Have Answers</h2>
             <p className="text-lg md:text-left text-gray-600 flex items-center gap-2 ">
               You will find answers to all your questions. For more information, you can always contact our technical
               support on the site.
@@ -32,14 +31,14 @@ const FAQ = () => {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1" className="border-indigo-600/20">
-              <AccordionTrigger className="text-blue-600 hover:text-indigo-600">How can I start working with InvestJar?</AccordionTrigger>
+              <AccordionTrigger className="text-indigo-900 hover:text-indigo-900/70">How can I start working with InvestJar?</AccordionTrigger>
               <AccordionContent className="text-gray-600">
                 Contact our support team to get started with your investment journey.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-2" className="border-indigo-600/20">
-              <AccordionTrigger className="text-blue-600 hover:text-indigo-600">
+              <AccordionTrigger className="text-indigo-900 hover:text-indigo-900/70">
                 What is the minimum percentage that an investor can earn?
               </AccordionTrigger>
               <AccordionContent className="text-gray-600">
@@ -48,7 +47,7 @@ const FAQ = () => {
             </AccordionItem>
 
             <AccordionItem value="item-3" className="border-indigo-600/20">
-              <AccordionTrigger className="text-blue-600 hover:text-indigo-600">
+              <AccordionTrigger className="text-indigo-900 hover:text-indigo-900/70">
                 Can I reinvest profit from my InvestJar account balance?
               </AccordionTrigger>
               <AccordionContent className="text-gray-600">
@@ -62,7 +61,7 @@ const FAQ = () => {
             </AccordionItem>
 
             <AccordionItem value="item-4" className="border-indigo-600/20">
-              <AccordionTrigger className="text-blue-600 hover:text-indigo-600">
+              <AccordionTrigger className="text-indigo-900 hover:text-indigo-900/70">
                 What payment system can I use to withdraw?
               </AccordionTrigger>
               <AccordionContent className="text-gray-600">
@@ -71,7 +70,7 @@ const FAQ = () => {
             </AccordionItem>
 
             <AccordionItem value="item-5" className="border-indigo-600/20">
-              <AccordionTrigger className="text-blue-600 hover:text-indigo-600">Can I lose my money?</AccordionTrigger>
+              <AccordionTrigger className="text-indigo-900 hover:text-indigo-900/70">Can I lose my money?</AccordionTrigger>
               <AccordionContent className="text-gray-600">
                 All investments carry some risk. Please read our risk disclosure document.
               </AccordionContent>

@@ -42,7 +42,7 @@ export default function Page() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="text-sm/5">
+          <div className="text-sm/5 text-center">
             <p>Manage Where your money goes to</p>
           </div>
           <CryptoList />
