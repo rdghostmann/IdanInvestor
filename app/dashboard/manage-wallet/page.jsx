@@ -14,7 +14,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { ManageWallet } from "../_components/ManageWallet/ManageWallet";
-import { CryptoList } from "@/components/CryptoList/CryptoList";
+import CryptoList from "@/components/CryptoList/CryptoList";
 
 
 export default function Page() {
