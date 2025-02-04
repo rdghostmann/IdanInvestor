@@ -1,6 +1,7 @@
 import { Label } from '@/components/ui/label'
 import Image from 'next/image'
 import React from 'react'
+import DepositForm from './DepositForm'
 
 
 const Deposit = () => {
@@ -13,7 +14,7 @@ const Deposit = () => {
 
       <div className="w-full lg:w-1/3 space-y-6 basis-0">
         {/* Make Deposit */}
-       
+        <DepositForm />
       </div>
     </div>
   )
@@ -21,13 +22,3 @@ const Deposit = () => {
 
 export default Deposit
 
-{/* Pay With */ }
-{/* <div className="flex flex-wrap justify-between items-center bg-gray-50 p-4 rounded-lg">
-  <div className="w-full">
-    <p className="text-sm text-gray-500">Pay with:</p>
-    <select className="bg-transparent p-2 rounded w-full">
-      <option>PayPal</option>
-      <option>Credit Card</option>
-    </select>
-  </div>
-</div> */}

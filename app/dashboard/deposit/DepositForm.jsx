@@ -1,20 +1,19 @@
+//DepositForm.jsx
 "use client";
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { fetchAssets } from "@/lib/depositAction";
 import { upload } from '@vercel/blob/client';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function DepositForm() {
   const [assets, setAssets] = useState([]);
   const [selectedAsset, setSelectedAsset] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
   const [amount, setAmount] = useState("");
-  // const [proofFile, setProofFile] = useState(null);
-  // const [proofUrl, setProofUrl] = useState("");
   const inputFileRef = useRef(null);
   const [proofUrl, setProofUrl] = useState(null);
-
 
   useEffect(() => {
     async function loadAssets() {
@@ -24,8 +23,8 @@ export default function DepositForm() {
     loadAssets();
   }, []);
 
-  const handleAssetChange = (e) => {
-    const selected = assets.find((asset) => asset.name === e.target.value);
+  const handleAssetChange = (value) => {
+    const selected = assets.find((asset) => asset.name === value);
     setSelectedAsset(selected?.name || "");
     setWalletAddress(selected?.address || "");
   };
@@ -43,31 +42,29 @@ export default function DepositForm() {
   };
 
   return (
-    <form onSubmit={handleFileUpload}
-    
-    className="mb-2 bg-white shadow-md p-4 rounded-lg">
+    <form onSubmit={handleFileUpload} className="mb-2 bg-white shadow-md p-4 rounded-lg">
       <div className="space-y-4">
         {/* Asset Selection */}
         <div className="bg-gray-50 p-4 rounded-lg">
           <label htmlFor="Asset_Name" className="text-sm text-gray-500">Select Crypto to Deposit:</label>
-          <select 
-            id="Asset_Name"
-            name="Asset_Name"
-            value={selectedAsset}
-            onChange={handleAssetChange}
-            className="bg-transparent p-2 rounded w-full"
-          >
-            <option value="">-- Select Asset --</option>
-            {assets.map((asset) => (
-              <option key={asset.name} value={asset.name}>{asset.name}</option>
-            ))}
-          </select>
+          <Select value={selectedAsset} onValueChange={handleAssetChange}>
+            <SelectTrigger className="bg-transparent p-2 rounded w-full">
+              <SelectValue placeholder="-- Select Asset --" />
+            </SelectTrigger>
+            <SelectContent>
+              {assets.map((asset) => (
+                <SelectItem key={asset.name} value={asset.name}>
+                  {asset.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Amount Input */}
         <div className="bg-gray-50 p-4 rounded-lg">
           <label htmlFor="deposit_Amount" className="text-sm text-gray-500">Amount:</label>
-          <input 
+          <input
             id="deposit_Amount"
             name="deposit_Amount"
             type="number"
@@ -81,7 +78,7 @@ export default function DepositForm() {
         {/* Wallet Address */}
         <div className="bg-gray-50 p-4 rounded-lg">
           <label htmlFor="Asset_Address" className="text-sm text-gray-500">Wallet Address:</label>
-          <input 
+          <input
             id="Asset_Address"
             name="Asset_Address"
             type="text"
@@ -95,7 +92,7 @@ export default function DepositForm() {
         <div className="bg-gray-50 p-4 rounded-lg">
           <label htmlFor="Asset_QRCODE" className="text-sm text-gray-500">Wallet QR Code:</label>
           {walletAddress ? (
-            <Image 
+            <Image
               src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${walletAddress}`}
               alt="Wallet QR Code"
               width={150}
@@ -109,14 +106,14 @@ export default function DepositForm() {
         {/* Proof of Deposit Upload */}
         <div className="bg-gray-50 p-4 rounded-lg">
           <label htmlFor="deposit_Proof" className="text-sm text-gray-500">Upload Proof of Deposit:</label>
-          <input 
+          <input
             id="deposit_Proof"
             type="file"
             name="file"
             ref={inputFileRef}
             className="bg-transparent p-2 rounded w-full"
           />
-          {proofUrl ? ( <img src={proofUrl.url} alt={proofUrl.url} style={{width:"200", height:"auto"}} />) : (<p className="text-sm text-green-500">Proof uploaded successfully</p>)}
+          {proofUrl ? (<img src={proofUrl.url} alt={proofUrl.url} style={{ width: "200px", height: "auto" }} />) : (<p className="text-sm text-green-500">Proof uploaded successfully</p>)}
         </div>
       </div>
 
