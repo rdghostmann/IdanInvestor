@@ -33,8 +33,8 @@ export default function ROIPlan() {
   const totalProfit = dailyProfit * 30
 
   return (
-    <div className="w-full px-4 py-12 bg-slate-200">
-      <div className="container mx-auto">
+    <div className="w-full px-4 py-12 bg-transparent">
+      <div className="container mx-auto bg-gray-50 bg-clip-padding backdrop-filter  backdrop-blur-lg bg-opacity-30 backdrop-saturate-100 backdrop-contrast-150">
         {/* Investment Plans */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {plans.map((plan) => (

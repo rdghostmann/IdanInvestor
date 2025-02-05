@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Phone, MessageSquare, ArrowRight } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function CallToAction() {
   return (
@@ -32,20 +33,22 @@ export default function CallToAction() {
                 <MessageSquare className="mr-2 h-4 w-4" />
                 Live Chat
               </Button>
+              <Link href="/register">
               <Button className="bg-blue-600 text-white hover:bg-blue-500/90 rounded-full">
                 Get Started Now
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
+              </Link>
             </div>
           </div>
-          <div className="absolute right-0 bottom-0 hidden md:block">
-            {/* <img
+          <div className="absolute -z-10 right-0 bottom-0 hidden md:block">
+            <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/call-to-action3-khwsNEIQTiHCnBqB8TbMwisV21e0Ap.png"
               alt="Investment Illustration"
               width={400}
               height={300}
               className="object-contain"
-            /> */}
+            />
           </div>
         </div>
       </div>
