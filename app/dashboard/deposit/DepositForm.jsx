@@ -1,11 +1,9 @@
-//DepositForm.jsx
 "use client";
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { fetchAssets } from "@/lib/depositAction";
-import { upload } from '@vercel/blob/client';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { upload } from "@vercel/blob/client";
 
 export default function DepositForm() {
   const [assets, setAssets] = useState([]);
@@ -24,45 +22,62 @@ export default function DepositForm() {
   }, []);
 
   const handleAssetChange = (e) => {
-    const selected = assets.find((asset) => asset.name === e.target.value);
-    console.log("Selected Asset:", selected); // Debugging line
-    setSelectedAsset(selected?.name || "");
-    setWalletAddress(selected?.address || "");
+    const assetName = e.target.value;
+    const selected = assets.find((asset) => asset.name === assetName);
+
+    if (selected) {
+      setSelectedAsset(assetName);
+      setWalletAddress(selected.address);
+    } else {
+      setSelectedAsset("");
+      setWalletAddress("");
+    }
   };
 
   const handleFileUpload = async (e) => {
     e.preventDefault();
+
     const file = inputFileRef.current.files[0];
     const newBlob = await upload(file.name, file, {
-      access: 'public',
-      handleUploadUrl: '/api/upload',
+      access: "public",
+      handleUploadUrl: "/api/upload",
     });
+
     setProofUrl(newBlob);
   };
 
   return (
-    <form onSubmit={handleFileUpload} className="mb-2 bg-white shadow-md p-4 rounded-lg">
+    <form
+      onSubmit={handleFileUpload}
+      className="mb-2 bg-white shadow-md p-4 rounded-lg"
+    >
       <div className="space-y-4">
         {/* Asset Selection */}
         <div className="bg-gray-50 p-4 rounded-lg">
-          <label htmlFor="Asset_Name" className="text-sm text-gray-500">Select Crypto to Deposit:</label>
-          <Select value={selectedAsset} onValueChange={handleAssetChange}>
-            <SelectTrigger className="bg-transparent p-2 rounded w-full">
-              <SelectValue placeholder="-- Select Asset --" />
-            </SelectTrigger>
-            <SelectContent>
-              {assets.map((asset) => (
-                <SelectItem key={asset.name} value={asset.name}>
-                  {asset.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <label htmlFor="Asset_Name" className="text-sm text-gray-500">
+            Select Crypto to Deposit:
+          </label>
+          <select
+            id="Asset_Name"
+            name="Asset_Name"
+            value={selectedAsset}
+            onChange={handleAssetChange}
+            className="bg-transparent p-2 rounded w-full"
+          >
+            <option value="">-- Select Asset --</option>
+            {assets.map((asset) => (
+              <option key={asset.name} value={asset.name}>
+                {asset.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Amount Input */}
         <div className="bg-gray-50 p-4 rounded-lg">
-          <label htmlFor="deposit_Amount" className="text-sm text-gray-500">Amount:</label>
+          <label htmlFor="deposit_Amount" className="text-sm text-gray-500">
+            Amount:
+          </label>
           <input
             id="deposit_Amount"
             name="deposit_Amount"
@@ -76,7 +91,9 @@ export default function DepositForm() {
 
         {/* Wallet Address */}
         <div className="bg-gray-50 p-4 rounded-lg">
-          <label htmlFor="Asset_Address" className="text-sm text-gray-500">Wallet Address:</label>
+          <label htmlFor="Asset_Address" className="text-sm text-gray-500">
+            Wallet Address:
+          </label>
           <input
             id="Asset_Address"
             name="Asset_Address"
@@ -89,7 +106,9 @@ export default function DepositForm() {
 
         {/* QR Code (Optional) */}
         <div className="bg-gray-50 p-4 rounded-lg">
-          <label htmlFor="Asset_QRCODE" className="text-sm text-gray-500">Wallet QR Code:</label>
+          <label htmlFor="Asset_QRCODE" className="text-sm text-gray-500">
+            Wallet QR Code:
+          </label>
           {walletAddress ? (
             <Image
               src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${walletAddress}`}
@@ -104,7 +123,9 @@ export default function DepositForm() {
 
         {/* Proof of Deposit Upload */}
         <div className="bg-gray-50 p-4 rounded-lg">
-          <label htmlFor="deposit_Proof" className="text-sm text-gray-500">Upload Proof of Deposit:</label>
+          <label htmlFor="deposit_Proof" className="text-sm text-gray-500">
+            Upload Proof of Deposit:
+          </label>
           <input
             id="deposit_Proof"
             type="file"
@@ -112,9 +133,12 @@ export default function DepositForm() {
             ref={inputFileRef}
             className="bg-transparent p-2 rounded w-full"
           />
-
           {proofUrl ? (
-            <img src={proofUrl.url} alt={proofUrl.url} style={{ width: "200", height: "auto" }} />
+            <img
+              src={proofUrl.url}
+              alt="Proof of Deposit"
+              style={{ width: "200px", height: "auto" }}
+            />
           ) : (
             <p className="text-sm text-green-500">Proof uploaded successfully</p>
           )}
