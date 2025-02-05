@@ -23,21 +23,20 @@ export default function DepositForm() {
     loadAssets();
   }, []);
 
-  const handleAssetChange = (value) => {
-    const selected = assets.find((asset) => asset.name === value);
+  const handleAssetChange = (e) => {
+    const selected = assets.find((asset) => asset.name === e.target.value);
+    console.log("Selected Asset:", selected); // Debugging line
     setSelectedAsset(selected?.name || "");
     setWalletAddress(selected?.address || "");
   };
 
   const handleFileUpload = async (e) => {
     e.preventDefault();
-
     const file = inputFileRef.current.files[0];
     const newBlob = await upload(file.name, file, {
       access: 'public',
       handleUploadUrl: '/api/upload',
     });
-
     setProofUrl(newBlob);
   };
 
@@ -113,7 +112,12 @@ export default function DepositForm() {
             ref={inputFileRef}
             className="bg-transparent p-2 rounded w-full"
           />
-          {proofUrl ? (<img src={proofUrl.url} alt={proofUrl.url} style={{ width: "200px", height: "auto" }} />) : (<p className="text-sm text-green-500">Proof uploaded successfully</p>)}
+
+          {proofUrl ? (
+            <img src={proofUrl.url} alt={proofUrl.url} style={{ width: "200", height: "auto" }} />
+          ) : (
+            <p className="text-sm text-green-500">Proof uploaded successfully</p>
+          )}
         </div>
       </div>
 
