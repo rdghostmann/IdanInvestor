@@ -58,7 +58,7 @@ const data = {
     },
     {
       title: "Make Deposit",
-      icon: HandCoins,
+      icon: ArrowDownToLine,
       url: "/dashboard/deposit",
     },
     {
@@ -78,7 +78,7 @@ const data = {
     },
     {
       title: "Withdraw Funds",
-      icon: ArrowDownToLine,
+      icon: HandCoins,
       url: "/dashboard/withdraw",
     },
     {
