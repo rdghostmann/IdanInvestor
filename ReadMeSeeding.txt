@@ -90,3 +90,33 @@
   }
 
 
+
+
+Warning: Only plain objects can be passed to Client Components from Server Components. Objects with toJSON methods are not supported. Convert it manually 
+to a simple value before passing it to props.
+
+Warning: A component is changing a controlled input to be uncontrolled. This is likely caused by the value changing from a defined to undefined, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. 
+
+[
+{
+    qrcodeImage: null,
+    _id: new ObjectId('123'), 
+    name: 'Bitcoin',
+    symbol: 'BTC',
+    network: 'Bitcoin',
+    depositAddress: 'bc1qxyz...',
+    status: 'active',
+
+  },
+{
+    qrcodeImage: null,
+    _id: new ObjectId('123'), 
+    name: 'Solana', 
+    symbol: 'SOL', 
+    network: 'Solana', 
+    depositAddress: '3abcxyz...', 
+    status: 'active',
+
+  }]
+
+Assist in implementing a functionality in a NextJs App Router Form that when an options is selected, it fetch

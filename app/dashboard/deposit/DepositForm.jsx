@@ -1,33 +1,25 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
-import { fetchAssets } from "@/lib/depositAction";
 import { upload } from "@vercel/blob/client";
-import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export default function DepositForm() {
-  const [assets, setAssets] = useState([]);
+
+export default function DepositForm({ assets }) {
   const [selectedAsset, setSelectedAsset] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
   const [amount, setAmount] = useState("");
   const inputFileRef = useRef(null);
   const [proofUrl, setProofUrl] = useState(null);
 
-  useEffect(() => {
-    async function loadAssets() {
-      const data = await fetchAssets();
-      setAssets(data);
-    }
-    loadAssets();
-  }, []);
-
-  const handleAssetChange = (value) => {
-    const selected = assets.find((asset) => asset.name === value);
+  const handleAssetChange = (e) => {
+    const assetName = e.target.value;
+    const selected = assets.find((asset) => asset.name === assetName);
 
     if (selected) {
-      setSelectedAsset(value);
-      setWalletAddress(selected.address);
+      setSelectedAsset(assetName);
+      setWalletAddress(selected.depositAddress);
     } else {
       setSelectedAsset("");
       setWalletAddress("");
@@ -57,7 +49,7 @@ export default function DepositForm() {
           <label htmlFor="Asset_Name" className="text-sm text-gray-500">
             Select Crypto to Deposit:
           </label>
-          <Select onValueChange={handleAssetChange} value={selectedAsset}>
+          <Select onChange={handleAssetChange} value={selectedAsset}>
             <SelectTrigger className="bg-transparent p-2 rounded w-full">
               <SelectValue placeholder="-- Select Asset --" />
             </SelectTrigger>
@@ -69,21 +61,6 @@ export default function DepositForm() {
               ))}
             </SelectContent>
           </Select>
-        </div>
-
-        {/* Wallet Address */}
-        <div className="bg-gray-50 p-4 rounded-lg">
-          <label htmlFor="Asset_Address" className="text-sm text-gray-500">
-            Wallet Address:
-          </label>
-          <input
-            id="Asset_Address"
-            name="Asset_Address"
-            type="text"
-            value={walletAddress}
-            readOnly
-            className="bg-transparent p-2 rounded w-full text-gray-700"
-          />
         </div>
 
         {/* Amount Input */}
@@ -102,12 +79,27 @@ export default function DepositForm() {
           />
         </div>
 
+        {/* Wallet Address */}
+        <div className="bg-gray-50 p-4 rounded-lg">
+          <label htmlFor="Asset_Address" className="text-sm text-gray-500">
+            Wallet Address:
+          </label>
+          <input
+            id="Asset_Address"
+            name="Asset_Address"
+            type="text"
+            value={walletAddress}
+            readOnly
+            className="bg-transparent p-2 rounded w-full text-gray-700"
+          />
+        </div>
+
         {/* QR Code (Optional) */}
         <div className="bg-gray-50 p-4 rounded-lg">
           <label htmlFor="Asset_QRCODE" className="text-sm text-gray-500">
             Wallet QR Code:
           </label>
-          {walletAddress ? (
+          {/* {walletAddress ? (
             <Image
               src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${walletAddress}`}
               alt="Wallet QR Code"
@@ -116,7 +108,7 @@ export default function DepositForm() {
             />
           ) : (
             <p className="text-gray-400">Select an asset to generate QR</p>
-          )}
+          )} */}
         </div>
 
         {/* Proof of Deposit Upload */}
