@@ -3,8 +3,13 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { upload } from "@vercel/blob/client";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function DepositForm({ assets }) {
   const [selectedAsset, setSelectedAsset] = useState("");
@@ -13,8 +18,7 @@ export default function DepositForm({ assets }) {
   const inputFileRef = useRef(null);
   const [proofUrl, setProofUrl] = useState(null);
 
-  const handleAssetChange = (e) => {
-    const assetName = e.target.value;
+  const handleAssetChange = (assetName) => {
     const selected = assets.find((asset) => asset.name === assetName);
 
     if (selected) {
@@ -49,7 +53,7 @@ export default function DepositForm({ assets }) {
           <label htmlFor="Asset_Name" className="text-sm text-gray-500">
             Select Crypto to Deposit:
           </label>
-          <Select onChange={handleAssetChange} value={selectedAsset}>
+          <Select onValueChange={handleAssetChange} value={selectedAsset}>
             <SelectTrigger className="bg-transparent p-2 rounded w-full">
               <SelectValue placeholder="-- Select Asset --" />
             </SelectTrigger>
@@ -92,23 +96,6 @@ export default function DepositForm({ assets }) {
             readOnly
             className="bg-transparent p-2 rounded w-full text-gray-700"
           />
-        </div>
-
-        {/* QR Code (Optional) */}
-        <div className="bg-gray-50 p-4 rounded-lg">
-          <label htmlFor="Asset_QRCODE" className="text-sm text-gray-500">
-            Wallet QR Code:
-          </label>
-          {/* {walletAddress ? (
-            <Image
-              src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${walletAddress}`}
-              alt="Wallet QR Code"
-              width={150}
-              height={150}
-            />
-          ) : (
-            <p className="text-gray-400">Select an asset to generate QR</p>
-          )} */}
         </div>
 
         {/* Proof of Deposit Upload */}
