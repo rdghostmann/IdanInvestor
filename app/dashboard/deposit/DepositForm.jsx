@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { fetchAssets } from "@/lib/depositAction";
 import { upload } from "@vercel/blob/client";
+import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
 
 export default function DepositForm() {
   const [assets, setAssets] = useState([]);
@@ -21,12 +22,11 @@ export default function DepositForm() {
     loadAssets();
   }, []);
 
-  const handleAssetChange = (e) => {
-    const assetName = e.target.value;
-    const selected = assets.find((asset) => asset.name === assetName);
+  const handleAssetChange = (value) => {
+    const selected = assets.find((asset) => asset.name === value);
 
     if (selected) {
-      setSelectedAsset(assetName);
+      setSelectedAsset(value);
       setWalletAddress(selected.address);
     } else {
       setSelectedAsset("");
@@ -57,20 +57,33 @@ export default function DepositForm() {
           <label htmlFor="Asset_Name" className="text-sm text-gray-500">
             Select Crypto to Deposit:
           </label>
-          <select
-            id="Asset_Name"
-            name="Asset_Name"
-            value={selectedAsset}
-            onChange={handleAssetChange}
-            className="bg-transparent p-2 rounded w-full"
-          >
-            <option value="">-- Select Asset --</option>
-            {assets.map((asset) => (
-              <option key={asset.name} value={asset.name}>
-                {asset.name}
-              </option>
-            ))}
-          </select>
+          <Select onValueChange={handleAssetChange} value={selectedAsset}>
+            <SelectTrigger className="bg-transparent p-2 rounded w-full">
+              <SelectValue placeholder="-- Select Asset --" />
+            </SelectTrigger>
+            <SelectContent>
+              {assets.map((asset) => (
+                <SelectItem key={asset.name} value={asset.name}>
+                  {asset.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Wallet Address */}
+        <div className="bg-gray-50 p-4 rounded-lg">
+          <label htmlFor="Asset_Address" className="text-sm text-gray-500">
+            Wallet Address:
+          </label>
+          <input
+            id="Asset_Address"
+            name="Asset_Address"
+            type="text"
+            value={walletAddress}
+            readOnly
+            className="bg-transparent p-2 rounded w-full text-gray-700"
+          />
         </div>
 
         {/* Amount Input */}
@@ -86,21 +99,6 @@ export default function DepositForm() {
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Enter Amount"
             className="bg-transparent p-2 rounded w-full"
-          />
-        </div>
-
-        {/* Wallet Address */}
-        <div className="bg-gray-50 p-4 rounded-lg">
-          <label htmlFor="Asset_Address" className="text-sm text-gray-500">
-            Wallet Address:
-          </label>
-          <input
-            id="Asset_Address"
-            name="Asset_Address"
-            type="text"
-            value={walletAddress}
-            readOnly
-            className="bg-transparent p-2 rounded w-full text-gray-700"
           />
         </div>
 

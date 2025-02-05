@@ -4,7 +4,9 @@ import FaQImg from "../../public/faqImg.png"
 import Image from "next/image";
 const FAQ = () => {
   return (
-    <div className=" bg-white text-gray-600 px-4 md:p-8">
+    <div className=" bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-[#57534e]
+via-[#a8a29e]
+to-[#e7e5e4] text-gray-600 px-4 md:p-8">
       <div className="max-w-6xl mx-auto my-12 grid md:grid-cols-2 gap-8 items-center">
         {/* Left side - Image */}
         <div className="hidden md:block">
@@ -13,10 +15,10 @@ const FAQ = () => {
             alt="Decorative question marks"
             className="w-full h-auto"
             priority
-            width={494} 
+            width={494}
             height={449}
-            />
-          
+          />
+
         </div>
 
         {/* Right side - Content */}

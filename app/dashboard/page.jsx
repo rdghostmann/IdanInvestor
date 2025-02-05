@@ -73,7 +73,7 @@ export default function Page() {
               {/* Main Stats */}
               <div className="grid grid-cols-1 sm:grid-col-2 md:grid-cols-4 gap-4 mb-6">
 
-                <div className="bg-gray-200 p-4 rounded-lg shadow">
+                <div className="bg-gradient-to-tr from-[#525252] via-[#a3a3a3] to-[#e5e5e5] p-4 rounded-lg shadow">
                   <div className="gap-2 mb-4">
                     <div className="text-center">
                       <p className="text-lg/5 md:text-xl font-bold">$5789</p>
@@ -81,7 +81,7 @@ export default function Page() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-gray-200 p-4 rounded-lg shadow">
+                <div className="bg-gradient-to-tr from-[#525252] via-[#a3a3a3] to-[#e5e5e5] p-4 rounded-lg shadow">
                   <div className="gap-2 mb-4">
                     <div className="text-center">
                       <p className="text-lg/5 md:text-xl font-bold">$2500</p>
@@ -89,7 +89,7 @@ export default function Page() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-gray-200 p-4 rounded-lg shadow">
+                <div className="bg-gradient-to-tr from-[#525252] via-[#a3a3a3] to-[#e5e5e5] p-4 rounded-lg shadow">
                   <div className="gap-2 mb-4">
                     <div className="text-center">
                       <p className="text-lg/5 md:text-xl font-bold">$7000</p>
@@ -97,7 +97,7 @@ export default function Page() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-gray-200 p-4 rounded-lg shadow">
+                <div className="bg-gradient-to-tr from-[#525252] via-[#a3a3a3] to-[#e5e5e5] p-4 rounded-lg shadow">
                   <div className="gap-2 mb-4">
                     <div className="text-center">
                       <p className="text-lg/5 md:text-xl font-bold">$7000</p>
