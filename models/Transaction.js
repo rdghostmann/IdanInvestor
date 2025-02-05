@@ -17,8 +17,8 @@ const TransactionSchema = new mongoose.Schema(
       required: true
     },
     asset: {
-      type: String,
-      enum: ["BTC", "ETH", "SOL"],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Asset",
       required: true
     }, // Asset type
     status: {

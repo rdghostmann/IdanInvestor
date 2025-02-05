@@ -11,8 +11,6 @@ const Deposit = async () => {
     depositAddress,
   }));
 
-  console.log("AssetsData:", assetData);
-
   return (
     <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
       <div className="text-sm/5 mb-2 bg-white shadow-md p-4 rounded-lg">
