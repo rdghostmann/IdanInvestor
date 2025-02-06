@@ -6,9 +6,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Slider } from "@/components/ui/slider"
 import { ArrowRight, Award } from "lucide-react"
-import Image from "next/image"
-
-
 
 const plans = [
   { type: "gold", roi: 120, minInvest: 500, maxInvest: 5000, medal: 1 },
@@ -33,33 +30,40 @@ export default function ROIPlan() {
   const totalProfit = dailyProfit * 30
 
   return (
-    <div className="w-full px-4 py-12 bg-transparent">
-      <div className="container mx-auto bg-gray-50 bg-clip-padding backdrop-filter  backdrop-blur-lg bg-opacity-30 backdrop-saturate-100 backdrop-contrast-150">
+    <div className="w-full px-4 py-12 bg-slate-200">
+      <div className="container mx-auto">
         {/* Investment Plans */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-6 md:overflow-visible">
           {plans.map((plan) => (
             <Card
               key={plan.type}
-              className={`relative overflow-hidden ${plan.type === "gold"
-                ? "bg-[#FFD700]/10 bg-gradient-to-r from-[#FFD700] to-[#B8860B] text-black"
-                : plan.type === "silver"
+              className={`relative overflow-hidden snap-center shrink-0 w-[90%] md:w-auto ${
+                plan.type === "gold"
+                  ? "bg-[#FFD700]/10 bg-gradient-to-r from-[#FFD700] to-[#B8860B] text-black"
+                  : plan.type === "silver"
                   ? "bg-[#C0C0C0]/10 bg-gradient-to-r from-[#C0C0C0] to-[#A9A9A9]"
                   : "bg-gradient-to-r from-[#CD7F32] to-[#8B4513] border-[#CD7F32]"
-                } border-2`}
+              } border-2`}
             >
               <CardHeader className="flex items-center pb-2">
-                <div className={`border-4 ${plan.type === "gold"
-                  ? "bg-[#FFD700]/1 border-[#FFD700]"
-                  : plan.type === "silver"
-                    ? "bg-[#C0C0C0]/10 border-[#C0C0C0]"
-                    : "bg-[#CD7F32]/10 border-[#CD7F32]"
-                  } p-3 rounded-full`}>
-                  <Award className={` ${plan.type === "gold"
-                    ? "text-[#FFD700]"
-                    : plan.type === "silver"
-                      ? "text-[#C0C0C0]"
-                      : "text-[#CD7F32]"
-                    }  h-8 w-8`} />
+                <div
+                  className={`border-4 p-3 rounded-full ${
+                    plan.type === "gold"
+                      ? "bg-[#FFD700]/10 border-[#FFD700]"
+                      : plan.type === "silver"
+                      ? "bg-[#C0C0C0]/10 border-[#C0C0C0]"
+                      : "bg-[#CD7F32]/10 border-[#CD7F32]"
+                  }`}
+                >
+                  <Award
+                    className={`h-8 w-8 ${
+                      plan.type === "gold"
+                        ? "text-[#FFD700]"
+                        : plan.type === "silver"
+                        ? "text-[#C0C0C0]"
+                        : "text-[#CD7F32]"
+                    }`}
+                  />
                 </div>
               </CardHeader>
 
@@ -85,7 +89,7 @@ export default function ROIPlan() {
         </div>
 
         {/* Investment Calculator */}
-        <Card className="bg-[#000000] text-white">
+        <Card className="bg-[#000000] text-white mt-8">
           <CardContent className="p-6">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               <div className="lg:col-span-3 space-y-6">
@@ -99,7 +103,7 @@ export default function ROIPlan() {
                         variant={selectedPlan.type === plan.type ? "default" : "outline"}
                         className={
                           selectedPlan.type === plan.type
-                            ? "bg-gradient-to-br from-[#07071a] to-[#2c0323]  text-white"
+                            ? "bg-gradient-to-br from-[#07071a] to-[#2c0323] text-white"
                             : "border-[#2C1810] text-[#2C1810]"
                         }
                       >
@@ -132,7 +136,7 @@ export default function ROIPlan() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-[#07071a] to-[#2c0323]  text-white p-6 rounded-lg">
+              <div className="bg-gradient-to-br from-[#07071a] to-[#2c0323] text-white p-6 rounded-lg">
                 <div className="space-y-4">
                   <div>
                     <div className="text-sm">Daily Profit</div>
@@ -151,9 +155,7 @@ export default function ROIPlan() {
             </div>
           </CardContent>
         </Card>
-
       </div>
     </div>
   )
 }
-
