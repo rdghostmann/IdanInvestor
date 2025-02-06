@@ -96,8 +96,7 @@ const CryptoCard = ({ crypto, onClick }) => (
       <Image
         src={crypto.path || "/placeholder.svg"}
         alt={crypto.alt}
-        layout="fill"
-        objectFit="contain"
+        
         className="rounded-full"
       />
     </div>

@@ -75,12 +75,12 @@ export default function ROIPlan() {
                 <p className="text-sm text-white mb-4">Daily for 30 Days</p>
                 <div className="bg-black/20 rounded-lg p-4">
                   <div className="flex justify-between text-sm mb-2">
-                    <span>Min. Invest</span>
-                    <span>${plan.minInvest}</span>
+                    <span className="w-1/2 border-r-2">Min. Invest</span>
+                    <span className="w-1/2">${plan.minInvest}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>Max. Invest</span>
-                    <span>${plan.maxInvest}</span>
+                    <span className="w-1/2 border-r-2">Max. Invest</span>
+                    <span className="w-1/2">${plan.maxInvest}</span>
                   </div>
                 </div>
               </CardContent>

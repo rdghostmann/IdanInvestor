@@ -44,12 +44,11 @@ export default function CallToAction() {
           </div>
           <div className="absolute animate-pulse size-72 -z-10 -right-10 -bottom-5 ">
             <Image
-              // src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/call-to-action3-khwsNEIQTiHCnBqB8TbMwisV21e0Ap.png"
               src={earth}
               alt="Investment Illustration"
               width={400}
               height={300}
-              className="object-cover opacity-65 animate-bounce"
+              className="object-cover opacity-65"
             />
           </div>
         </div>
