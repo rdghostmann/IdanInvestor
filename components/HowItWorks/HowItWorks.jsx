@@ -6,7 +6,7 @@ import waterbluebg from "../../public/image_fx_.jpg"
 const HowItWorks = () => {
 
   return (
-    <section className="relative px-4 py-16 md:px-6 lg:px-8">
+    <section className="w-full relative px-4 py-16 md:px-6 lg:px-8">
      <Image
      src={waterbluebg}
      alt='waterbluemark'

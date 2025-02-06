@@ -9,18 +9,21 @@ const deposits = [
     name: "Lewis Lee",
     date: "Nov-3-2021",
     amount: 3600,
+    currency: "SOL",
   },
   {
     id: "2",
     name: "Sarah Chen",
     date: "Nov-3-2021",
     amount: 5200,
+    currency: "BTC",
   },
   {
     id: "3",
     name: "Michael Brown",
     date: "Nov-3-2021",
     amount: 2800,
+    currency: "ETH",
   },
 ];
 
@@ -30,18 +33,21 @@ const withdrawals = [
     name: "Emma Wilson",
     date: "Nov-3-2021",
     amount: 1500,
+    currency: "SOL"
   },
   {
     id: "2",
     name: "James Rodriguez",
     date: "Nov-3-2021",
     amount: 4200,
+    currency: "BTC"
   },
   {
     id: "3",
     name: "Lisa Wang",
     date: "Nov-3-2021",
     amount: 3100,
+    currency: "ETH"
   },
 ];
 
@@ -86,12 +92,13 @@ const InvestorsActivity = () => {
 
                 <TabsContent value="deposits">
                   <div className="rounded-lg overflow-x-auto border border-blue-500/20">
-                    <Table className="min-w-full">
+                    <Table className="w-full min-w-full">
                       <TableHeader>
                         <TableRow className="bg-blue-950/50 hover:bg-blue-900/50">
                           <TableHead className="text-blue-100">Name</TableHead>
                           <TableHead className="text-blue-100">Date</TableHead>
                           <TableHead className="text-blue-100">Amount</TableHead>
+                          <TableHead className="hidden text-blue-100">Currency</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
@@ -108,6 +115,7 @@ const InvestorsActivity = () => {
                             </TableCell>
                             <TableCell className="text-blue-100">{transaction.date}</TableCell>
                             <TableCell className="text-blue-100">${transaction.amount.toLocaleString()}</TableCell>
+                            <TableCell className="hidden text-blue-100">{transaction.currency}</TableCell>
                           </TableRow>
                         ))}
                       </TableBody>
@@ -123,6 +131,7 @@ const InvestorsActivity = () => {
                           <TableHead className="text-blue-100">Name</TableHead>
                           <TableHead className="text-blue-100">Date</TableHead>
                           <TableHead className="text-blue-100">Amount</TableHead>
+                          <TableHead className="hidden text-blue-100">Currency</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
@@ -138,6 +147,7 @@ const InvestorsActivity = () => {
                             </TableCell>
                             <TableCell className="text-blue-100">{transaction.date}</TableCell>
                             <TableCell className="text-blue-100">${transaction.amount.toLocaleString()}</TableCell>
+                            <TableCell className="hidden text-blue-100">{transaction.currency}</TableCell>
                           </TableRow>
                         ))}
                       </TableBody>

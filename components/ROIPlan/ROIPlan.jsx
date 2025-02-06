@@ -128,7 +128,7 @@ export default function ROIPlan() {
                     onValueChange={handleAmountChange}
                     className="mt-4"
                   />
-                  <div className="text-sm text-gray-600 mt-2">{amount} USD</div>
+                  <div className="text-sm text-white mt-2">{amount} USD</div>
                 </div>
               </div>
 
@@ -140,7 +140,7 @@ export default function ROIPlan() {
                   </div>
                   <div>
                     <div className="text-sm">Total Profit</div>
-                    <div className="text-2xl font-bold">{totalProfit.toFixed(2)} USD</div>
+                    <div className="text-2xl  font-bold">{totalProfit.toFixed(2)} USD</div>
                   </div>
                   <Button className="w-full bg-[#686762] text-black hover:bg-[#FFD700]/90">
                     Invest Now

@@ -2,13 +2,14 @@ import { Button } from "@/components/ui/button"
 import { Phone, MessageSquare, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import earth from "../../public/earth.png"
 
 export default function CallToAction() {
   return (
     <section className="py-16 bg-black w-full">
       <div className="container mx-auto px-4">
         <div className="relative isolate bg-gray-900 rounded-2xl overflow-hidden">
-        <svg
+          <svg
             viewBox="0 0 1024 1024"
             aria-hidden="true"
             className="absolute top-1/2 left-1/2 -z-10 size-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
@@ -34,20 +35,21 @@ export default function CallToAction() {
                 Live Chat
               </Button>
               <Link href="/register">
-              <Button className="bg-blue-600 text-white hover:bg-blue-500/90 rounded-full">
-                Get Started Now
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+                <Button className="bg-blue-600 text-white hover:bg-blue-500/90 rounded-full">
+                  Get Started Now
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </Link>
             </div>
           </div>
-          <div className="absolute -z-10 right-0 bottom-0 hidden md:block">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/call-to-action3-khwsNEIQTiHCnBqB8TbMwisV21e0Ap.png"
+          <div className="absolute animate-pulse size-72 -z-10 -right-10 -bottom-5 ">
+            <Image
+              // src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/call-to-action3-khwsNEIQTiHCnBqB8TbMwisV21e0Ap.png"
+              src={earth}
               alt="Investment Illustration"
               width={400}
               height={300}
-              className="object-contain"
+              className="object-cover opacity-65 animate-bounce"
             />
           </div>
         </div>
@@ -58,4 +60,3 @@ export default function CallToAction() {
 
 
 
-              

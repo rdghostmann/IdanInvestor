@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { connectToDB } from "@/lib/connectDB";
 import Transaction from "@/models/Transaction";
 
-export async function POST(req) {
+export async function UploadDesposit(req) {
   await connectToDB();
   
   try {
@@ -32,7 +32,7 @@ export async function POST(req) {
       status: "pending",
     });
 
-    // Revalidate Desposit page
+    // Revalidate transactions page
     revalidatePath("/dashboard/deposit");
 
     return NextResponse.json({ message: "Deposit recorded successfully!", transaction }, { status: 201 });

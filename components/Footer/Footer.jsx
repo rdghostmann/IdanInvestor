@@ -1,7 +1,8 @@
 'use client';
 
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
-import invest from "../../public/investjar2.png";
+import Logo from "../../public/investjar2.png";
+import Image from "next/image";
 
 
 const sections = [
@@ -36,22 +37,26 @@ const sections = [
 
 const Footer7 = () => {
   return (
-    <section className="py-32 px-11 bg-black w-full text-cyan-50 text-center">
-      <div className="container ">
+    <section className="pt-20 pb-10 px-8 bg-black w-full text-cyan-50 text-center">
+      <div className="container mx-auto">
         <footer>
           <div className="flex flex-col items-center justify-between gap-10 text-center lg:flex-row lg:text-left">
             <div className="flex w-full max-w-96 shrink flex-col items-center justify-between gap-6 lg:items-start">
-              <div>
-                <span className="flex items-center justify-center gap-4 lg:justify-start">
-                  <img
-                    src={invest}
+              <div className="">
+                <span className="w-full py-2 border bg-cyan-50 text-gray-900 mx-auto flex items-center justify-center gap-4 lg:justify-start">
+                  <Image
+                    src={Logo}
                     alt="logo"
-                    className="h-11"
+                    style={{
+                      width: '40px',
+                      height: 'auto',
+                    }}
+                    className="object-cover"
                   />
                   <p className="text-3xl font-semibold">InvestJar</p>
                 </span>
                 <p className="mt-6 text-sm text-muted-foreground">
-                Empowering your financial future, one smart investment at a time.
+                  Empowering your financial future, one smart investment at a time.
                 </p>
               </div>
               <ul className="flex items-center space-x-6 text-muted-foreground">
@@ -111,4 +116,4 @@ const Footer7 = () => {
   )
 };
 
-export default Footer7 ;
+export default Footer7;

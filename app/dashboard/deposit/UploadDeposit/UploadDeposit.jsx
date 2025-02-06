@@ -25,7 +25,7 @@ export default function UploadDeposit({ userId, assetId, amount, onClose }) {
     formData.append("amount", amount);
 
     try {
-      const response = await fetch("/api/deposit", {
+      const response = await fetch("/api/upload", {
         method: "POST",
         body: formData,
       });

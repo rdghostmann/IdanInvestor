@@ -82,9 +82,9 @@ export default function DepositForm({ userId, assets }) {
       </form>
 
       {showUploadPopup && selectedAsset && (
-        <div className="fixed z-50 inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-lg font-semibold mb-4">Upload Proof of Deposit</h2>
+        <div className="fixed min-w-full min-h-screen z-50 inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 font-light rounded-lg shadow-lg">
+            <h2 className="text-lg mb-4">Upload Proof of Deposit</h2>
             <UploadDeposit userId={userId} assetId={selectedAsset._id} amount={amount} onClose={() => setShowUploadPopup(false)} />
           </div>
         </div>
