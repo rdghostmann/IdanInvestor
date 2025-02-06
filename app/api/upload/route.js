@@ -5,8 +5,7 @@ import { connectToDB } from "@/lib/connectDB";
 import Transaction from "@/models/Transaction";
 
 export async function POST(req) {
-  await connectToDB();
-  
+
   try {
     const formData = await req.formData();
     const file = formData.get("file");
@@ -21,7 +20,9 @@ export async function POST(req) {
     // Upload file
     const fileBuffer = Buffer.from(await file.arrayBuffer());
     const blob = await put(`deposits/${file.name}`, fileBuffer, { access: "public" });
+    console.log(blob.url);
 
+    await connectToDB();
     // Save transaction in database
     const transaction = await Transaction.create({
       user: userId,

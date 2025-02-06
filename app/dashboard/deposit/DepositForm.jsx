@@ -6,6 +6,7 @@ import CopyToClipboardButton from "./CopyToClipboardButton";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import UploadDeposit from "./UploadDeposit/UploadDeposit";
 
 export default function DepositForm({ userId, assets }) {
@@ -31,9 +32,10 @@ export default function DepositForm({ userId, assets }) {
     <>
       <form onSubmit={handleDeposit} className="mb-2 bg-white shadow-md p-4 rounded-lg">
         <div className="space-y-4">
+          {/* Amount Input */}
           <div className="bg-gray-50 p-4 rounded-lg">
             <Label htmlFor="deposit_Amount" className="text-sm text-gray-500">
-              Deposit Amount($):
+              Deposit Amount ($):
             </Label>
             <Input
               id="deposit_Amount"
@@ -45,10 +47,11 @@ export default function DepositForm({ userId, assets }) {
             />
           </div>
 
+          {/* Asset Selection */}
           <div className="bg-gray-50 p-4 rounded-lg">
-            <label htmlFor="Asset_Name" className="text-sm text-gray-500">
+            <Label htmlFor="Asset_Name" className="text-sm text-gray-500">
               Choose Asset:
-            </label>
+            </Label>
             <Select onValueChange={handleAssetChange} value={selectedAsset?.name || ""}>
               <SelectTrigger className="bg-transparent p-2 rounded w-full">
                 <SelectValue placeholder="-- Select Asset --" />
@@ -63,32 +66,48 @@ export default function DepositForm({ userId, assets }) {
             </Select>
           </div>
 
+          {/* Asset Details */}
           {selectedAsset && (
             <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="italic mb-4 text-pretty text-neutral-500 text-sm">
-                {`Kindly make your deposit of $${amount} to the Deposit Address ${selectedAsset.depositAddress}`}
-              </p>
+              <div className="mb-4 space-y-1 text-pretty text-neutral-500 text-sm">
+                <p className="text-purple-700">{`Only send ${amount} of ${selectedAsset.name} to the deposit address ${selectedAsset.depositAddress}.`}</p>
+                <p className="text-purple-700">{`Ensure the sender is on ${selectedAsset.name} network.`}</p>
+              </div>
               <Label htmlFor="Asset_Address" className="flex justify-between text-sm text-gray-500">
-                <span>Wallet Address:</span> <CopyToClipboardButton text={selectedAsset.depositAddress} />
+                <span>Wallet Address:</span>
+                <CopyToClipboardButton text={selectedAsset.depositAddress} />
               </Label>
-              <Input id="Asset_Address" type="text" value={selectedAsset.depositAddress} disabled readOnly className="bg-transparent p-2 rounded w-full text-gray-700" />
+              <Input
+                id="Asset_Address"
+                type="text"
+                value={selectedAsset.depositAddress}
+                disabled
+                readOnly
+                className="bg-transparent p-2 rounded w-full text-gray-700"
+              />
             </div>
           )}
         </div>
-
-        <Button type="submit" className="w-full bg-purple-600 text-white font-medium py-3 rounded-lg mt-6">
-          Proceed Deposit
-        </Button>
+        {/* Deposit Button & Popover */}
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button type="submit" className="w-full bg-purple-600 text-white font-medium py-3 rounded-lg mt-6">
+              Proceed Deposit
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="p-4 text-sm bg-white rounded-lg shadow-md">
+            <h2 className="mb-4">Upload Proof of Deposit</h2>
+            {selectedAsset && (
+              <UploadDeposit
+                userId={userId}
+                assetId={selectedAsset._id}
+                amount={amount}
+                onClose={() => setShowUploadPopup(false)}
+              />
+            )}
+          </PopoverContent>
+        </Popover>
       </form>
-
-      {showUploadPopup && selectedAsset && (
-        <div className="fixed min-w-full min-h-screen z-50 inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 font-light rounded-lg shadow-lg">
-            <h2 className="text-lg mb-4">Upload Proof of Deposit</h2>
-            <UploadDeposit userId={userId} assetId={selectedAsset._id} amount={amount} onClose={() => setShowUploadPopup(false)} />
-          </div>
-        </div>
-      )}
     </>
   );
 }
