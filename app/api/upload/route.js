@@ -7,10 +7,12 @@ import { fetchUser } from "@/lib/depositAction"; // Correct import
 import { getServerSession } from "next-auth"; // For session handling
 import { authOptions } from "@/lib/auth";
 
+
 export async function POST(req) {
   try {
     // Ensure DB connection
     await connectToDB();
+
 
     const formData = await req.formData();
     console.log("Received Form Data:", [...formData.entries()]);
@@ -88,7 +90,7 @@ export async function POST(req) {
     console.log("Deposit saved:", deposit);
 
     // Revalidate Deposit page
-    revalidatePath("/dashboard/deposit");
+    revalidatePath("/dashboard");
 
     return NextResponse.json({ message: "Deposit recorded successfully!" }, { status: 201 });
   } catch (error) {

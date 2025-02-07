@@ -11,9 +11,10 @@ const Deposit = async () => {
   const assets = await fetchAssets();
 
   // Ensure only plain objects are passed
-  const assetData = assets.map(({ name, depositAddress }) => ({
+  const assetData = assets.map(({ name, depositAddress, _id }) => ({
     name,
     depositAddress,
+    _id: _id.toString(), // Convert ObjectId to string
   }));
 
   // Server-side session fetching using getServerSession
@@ -39,7 +40,7 @@ const Deposit = async () => {
 
       <div className="w-full lg:w-1/3 space-y-6 basis-0">
         {/* Pass assets and userId as props */}
-        <DepositForm userId={user.username.toString()} assets={assetData} />
+        <DepositForm userId={user._id.toString()} assets={assetData} />
       </div>
     </div>
   );

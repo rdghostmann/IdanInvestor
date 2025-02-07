@@ -3,10 +3,13 @@
 import { useState, useRef } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function UploadDeposit({ userId, assetId, amount, onClose }) {
   const inputFileRef = useRef(null);
   const [uploading, setUploading] = useState(false);
+
+  const router = useRouter();
 
   const handleUpload = async (event) => {
     event.preventDefault();
@@ -15,6 +18,10 @@ export default function UploadDeposit({ userId, assetId, amount, onClose }) {
       return;
     }
 
+    if (!assetId || !userId || !amount) {
+      toast.error("Asset, User, or Amount information is missing.");
+      return;
+    }
     setUploading(true);
 
     const file = inputFileRef.current.files[0];
@@ -22,9 +29,7 @@ export default function UploadDeposit({ userId, assetId, amount, onClose }) {
     formData.append("userId", userId);
     formData.append("file", file);
     formData.append("amount", amount);
-    formData.append("assetId", assetId); // Ensure assetId is passed
-
- 
+    formData.append("assetId", assetId); // Ensure assetId is passed correctly
 
     try {
       const response = await fetch("/api/upload", {
@@ -33,17 +38,15 @@ export default function UploadDeposit({ userId, assetId, amount, onClose }) {
       });
 
       const data = await response.json();
-      console.log("Data:", data);
-
-      toast.success("Deposit submitted successfully!");
-      onClose();
-      
       if (!response.ok) {
         toast.error(data.error || "Upload failed. Try again.");
         return;
       }
-      toast.success(data.message || "Deposit submitted successfully!");
+      toast.success("Deposit submitted successfully!");
       onClose();
+      // Refresh the page and navigate to /dashboard/deposit
+      router.push("/dashboard");  // Navigate to the deposit page
+      // router.refresh();  // Refresh the page if needed (optional)
     } catch (error) {
       toast.error(error.message || "Upload failed. Try again.");
     } finally {
@@ -62,4 +65,3 @@ export default function UploadDeposit({ userId, assetId, amount, onClose }) {
     </div>
   );
 }
-

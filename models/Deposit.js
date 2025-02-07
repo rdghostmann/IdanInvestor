@@ -8,17 +8,19 @@ const DepositSchema = new mongoose.Schema(
       required: true,
     },
     asset: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Asset",
       required: true,
     },
+
     amount: {
       type: Number,
       required: true,
     },
     proofOfDeposit: {
       type: String,
-      required: true, // URL to the uploaded proof file
-    },
+      required: true,
+    }, // Vercel Blob Storage URL
     status: {
       type: String,
       enum: ["pending", "approved", "declined"],
