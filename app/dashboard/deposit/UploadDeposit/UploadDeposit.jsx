@@ -43,12 +43,14 @@ export default function UploadDeposit({ userId, assetId, amount, onClose }) {
         toast.error(data.error || "Upload failed. Try again.");
         return;
       }
+      
+      toast.success("Deposit submitted successfully!");
+      onClose();
+
       // Refresh the page and navigate to /dashboard/deposit
       router.refresh();  // Refresh the page if needed (optional)
       router.push("/dashboard");  // Navigate to the deposit page
 
-      toast.success("Deposit submitted successfully!");
-      onClose();
     } catch (error) {
       toast.error(error.message || "Upload failed. Try again.");
     } finally {
