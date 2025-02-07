@@ -14,6 +14,9 @@ export default function DepositForm({ userId, assets }) {
   const [amount, setAmount] = useState("");
   const [showUploadPopup, setShowUploadPopup] = useState(false);
 
+  console.log("UserId Gotton:",userId)
+  console.log("AssetsId Gotton:", assets)
+
   const handleAssetChange = (assetName) => {
     const asset = assets.find((a) => a.name === assetName);
     setSelectedAsset(asset || null);
@@ -98,12 +101,12 @@ export default function DepositForm({ userId, assets }) {
           <PopoverContent className="p-4 text-sm bg-white rounded-lg shadow-md">
             <h2 className="mb-4">Upload Proof of Deposit</h2>
             {selectedAsset && (
-              <UploadDeposit
-                userId={userId}
-                assetId={selectedAsset._id}
-                amount={amount}
-                onClose={() => setShowUploadPopup(false)}
-              />
+             <UploadDeposit
+             userId
+             amount={amount}
+             assetId={selectedAsset.name} // Added assetId to send with the upload request
+           />
+           
             )}
           </PopoverContent>
         </Popover>

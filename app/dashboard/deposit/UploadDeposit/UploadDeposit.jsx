@@ -16,13 +16,15 @@ export default function UploadDeposit({ userId, assetId, amount, onClose }) {
     }
 
     setUploading(true);
-    
+
     const file = inputFileRef.current.files[0];
     const formData = new FormData();
-    formData.append("file", file);
     formData.append("userId", userId);
-    formData.append("assetId", assetId);
+    formData.append("file", file);
     formData.append("amount", amount);
+    formData.append("assetId", assetId); // Ensure assetId is passed
+
+ 
 
     try {
       const response = await fetch("/api/upload", {
@@ -31,10 +33,16 @@ export default function UploadDeposit({ userId, assetId, amount, onClose }) {
       });
 
       const data = await response.json();
-
-      if (!response.ok) throw new Error(data.error);
+      console.log("Data:", data);
 
       toast.success("Deposit submitted successfully!");
+      onClose();
+      
+      if (!response.ok) {
+        toast.error(data.error || "Upload failed. Try again.");
+        return;
+      }
+      toast.success(data.message || "Deposit submitted successfully!");
       onClose();
     } catch (error) {
       toast.error(error.message || "Upload failed. Try again.");
@@ -51,10 +59,7 @@ export default function UploadDeposit({ userId, assetId, amount, onClose }) {
           {uploading ? "Uploading..." : "Upload"}
         </Button>
       </form>
-
-      <Button onClick={onClose} className="mt-4 w-full bg-gray-500 text-white py-2 rounded-lg">
-        Close
-      </Button>
     </div>
   );
 }
+

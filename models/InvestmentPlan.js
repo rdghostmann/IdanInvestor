@@ -1,33 +1,24 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const InvestmentPlanSchema = new mongoose.Schema({
+const investmentPlanSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
-  minAmount: {
-    type: Number,
-    required: true,
-  },
-  maxAmount: {
-    type: Number,
-    required: true,
-  },
-  roi: {
+  interestRate: {
     type: Number,
     required: true,
   },
   duration: {
-    type: String,
-    required: true
+    type: Number,
+    required: true,
   },
-  
-}, {
-  timestamps: true
+  minInvestment: {
+    type: Number,
+    required: true,
+  },
 });
 
+const InvestmentPlan = mongoose.models.InvestmentPlan || mongoose.model("InvestmentPlan", investmentPlanSchema);
 
-// Fix the model export
-const InvestmentPlan = mongoose.models?.InvestmentPlan || mongoose.model("InvestmentPlan", InvestmentPlanSchema);
 export default InvestmentPlan;
-

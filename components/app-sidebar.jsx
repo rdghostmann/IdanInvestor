@@ -41,15 +41,9 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-
 const data = {
-  user: {
-    name: "IDAN",
-    email: "idan@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   navMain: [
-   
+
     {
       title: "Dashboard",
       icon: LayoutDashboard,
