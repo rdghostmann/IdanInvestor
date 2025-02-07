@@ -15,7 +15,7 @@ export async function POST(req) {
 
 
     const formData = await req.formData();
-    console.log("Received Form Data:", [...formData.entries()]);
+    // console.log("Received Form Data:", [...formData.entries()]);
 
     // Extract file and other data
     const file = formData.get("file");
@@ -33,7 +33,7 @@ export async function POST(req) {
 
     // Fetch user by email
     const user = await fetchUser(email);
-    console.log("User Fetched on upload/route",user);
+    // console.log("User Fetched on upload/route",user);
 
     // Handle invalid user
     if (!user) {
@@ -66,7 +66,7 @@ export async function POST(req) {
     let blob;
     try {
       blob = await put(`deposits/${file.name}`, fileBuffer, { access: "public" });
-      console.log("Upload Success:", blob);
+      // console.log("Upload Success:", blob);
     } catch (uploadError) {
       console.error("File Upload Error:", uploadError);
       return NextResponse.json({ error: "File upload failed" }, { status: 500 });
