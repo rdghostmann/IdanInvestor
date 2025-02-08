@@ -2,27 +2,30 @@ import React from 'react';
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowDownRight, ArrowRight } from "lucide-react";
-import About1 from "../../public/about-1.png";
+import About1 from "../../public/scrum-meeting2.png";
 import { Badge } from '../ui/badge';
 
 const AboutInvestJar = () => {
   return (
-    <div className="bg-white text-slate-700">
+    <div className=" text-slate-800 bg-gray-300">
     {/* Hero Section */}
     <section className="w-full py-4 md:py-8">
+      
       <div className="px-4">
         <div className="flex pb-6 flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          <div className="w-full sm:w-3/4">
+          <div className="w-full sm:w-2/4 p-0 lg:p-12">
             <Image
               src={About1}
               alt="Analytics Dashboard"
-              width={408}
-              height={386}
-              className="border rounded-lg w-full h-auto"
+              width={400}
+              height={300}
+              quality={100}
+              placeholder='blur'
+              className=" w-full h-auto rounded-2xl"
             />
           </div>
           <div className="w-full lg:w-1/2 space-y-4">
-          <Badge className="text-md bg-gradient-to-r from-blue-500 to-indigo-500 text-white" variant="outline">
+          <Badge className="text-md bg-gradient-to-r from-blue-500 to-indigo-500 text-white" >
               About InvestJar
               <ArrowDownRight className="ml-2 size-4" />
             </Badge>

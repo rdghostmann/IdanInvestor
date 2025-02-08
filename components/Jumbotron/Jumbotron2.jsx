@@ -3,13 +3,13 @@ import { ArrowDownRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { AnimatedShinyText } from "../ui/animated-shiny-text";
-import earth from "../../public/earth.png"
+import earth from "../../public/header-astro2.png"
 import Image from 'next/image';
 
 
 const Hero1 = () => {
   return (
-    <section className="py-10 px-7">
+    <section className="py-10 px-7 bg-gradient-to-br from-[#010103] to-[#3b0930] w-full">
       <div className="container">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
@@ -22,10 +22,10 @@ const Hero1 = () => {
                 </Link>
               </AnimatedShinyText>
             </div>
-            <h1 className="my-6 text-pretty text-blue-700 text-4xl font-bold lg:text-6xl">
+            <h1 className="my-6 text-pretty text-white text-4xl font-bold lg:text-6xl">
               Invest at the perfect time
             </h1>
-            <p className="mb-8 max-w-xl text-muted-foreground lg:text-xl">
+            <p className="mb-8 max-w-xl text-gray-300 lg:text-xl">
               By leveraging insights from our network of industry insiders, you'll know exactly when to buy to maximize profit and exactly when to sell to avoid losses
             </p>
             <div className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
@@ -38,13 +38,13 @@ const Hero1 = () => {
               </Button>
             </div>
           </div>
-          <div className='bg-slate-400 max-h-96 p-4 rounded-md '>
+          <div className='border-2  overflow-hidden  rounded-md w-full '>
             <Image
               src={earth}
               alt="hero-img"
-              width={400}
-              height={300}
-              className="animate-pulse w-full mix-blend-color-dodge rounded-md object-contain"
+              width={960}
+              height={764}
+              className="animate-pulse border-2 border-red-500  rounded-md object-cover"
             />
           </div>
           {/* <img

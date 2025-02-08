@@ -1,46 +1,72 @@
-import React from 'react'
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import { TrendingUp, Users, DollarSign, BarChart } from "lucide-react";
 
 const Stats = () => {
   return (
-    <section>
-    {/* Container */}
-    <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-20">
-      {/* Title */}
-      <h2 className="text-center text-3xl font-bold md:text-5xl">
-        Our Stats
-      </h2>
-      {/* <p className="mx-auto mb-8 mt-4 max-w-lg items-center text-center text-sm text-gray-500 sm:text-base md:mb-12 lg:mb-16">
-        Lorem ipsum dolor sit amet consectetur adipiscing elit ut
-        aliquam,purus sit amet luctus magna fringilla urna
-      </p> */}
-      {/* Content */}
-      <div className="mx-auto flex w-full max-w-4xl flex-col flex-wrap justify-between gap-5 px-16 py-8 sm:flex-row md:gap-6">
+    
+   
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="  mx-auto bg-gray-300 shadow-xl  w-full  p-6 border py-10 hover:shadow-2xl transition-shadow duration-300"
+      >
         
-        <div className="border border-gray-800 rounded-lg p-3 flex flex-col items-center justify-center gap-4">
-          <div>
-            {/* image  */}
-          </div>
-          <p className="text-sm">Total Desposited</p>
-          <h2 className="text-3xl font-bold md:text-6xl">62K</h2>
-        </div>
-        <div className="border border-gray-800 rounded-lg p-3 flex flex-col items-center justify-center gap-4">
-          <div>
-            {/* image  */}
-          </div>
-          <p className="text-sm">Total Members</p>
-          <h2 className="text-3xl font-bold md:text-6xl">70K+</h2>
-        </div>
-        <div className="border border-gray-800 rounded-lg p-3 flex flex-col items-center justify-center gap-4">
-          <div>
-            {/* image  */}
-          </div>
-          <p className="text-sm">Support Countries</p>
-          <h2 className="text-3xl font-bold md:text-6xl">178</h2>
-        </div>
-      </div>
-    </div>
-  </section>
-  )
-}
 
-export default Stats
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 ">
+          {/* Total Investments */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center space-x-3 bg-blue-100 p-5 rounded-xl shadow-md"
+          >
+            <DollarSign className="text-green-600 size-10" />
+            <div>
+              <p className="text-gray-600 text-sm">Total Investments</p>
+              <p className="text-2xl font-semibold text-gray-800">$1.2M</p>
+            </div>
+          </motion.div>
+
+          {/* Active Users */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center space-x-3 bg-green-100 p-5 rounded-xl shadow-md"
+          >
+            <Users className="text-green-600 size-10" />
+            <div>
+              <p className="text-gray-600 text-sm">Active Users</p>
+              <p className="text-2xl font-semibold text-gray-800">5,340</p>
+            </div>
+          </motion.div>
+
+          {/* ROI */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center space-x-3 bg-purple-100 p-5 rounded-xl shadow-md"
+          >
+            <TrendingUp className="text-purple-600 size-10" />
+            <div>
+              <p className="text-gray-600 text-sm">ROI (Annual)</p>
+              <p className="text-2xl font-semibold text-gray-800">14.8%</p>
+            </div>
+          </motion.div>
+
+          {/* Growth Rate */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center space-x-3 bg-yellow-100 p-5 rounded-xl shadow-md"
+          >
+            <BarChart className="text-yellow-600 size-10" />
+            <div>
+              <p className="text-gray-600 text-sm">Growth Rate</p>
+              <p className="text-2xl font-semibold text-gray-800">9.2%</p>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+  
+  );
+};
+
+export default Stats;

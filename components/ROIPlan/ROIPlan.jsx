@@ -30,7 +30,7 @@ export default function ROIPlan() {
   const totalProfit = dailyProfit * 30
 
   return (
-    <div className="w-full px-4 py-12 bg-slate-200">
+    <div className="w-full px-4 py-12 ">
       <div className="container mx-auto">
         {/* Investment Plans */}
         <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 md:gap-6 md:overflow-visible">
@@ -120,7 +120,7 @@ export default function ROIPlan() {
                       type="number"
                       value={amount}
                       onChange={(e) => setAmount(Number(e.target.value))}
-                      className="bg-white border-[#2C1810]"
+                      className="bg-red-450 border-[#2C1810] text-black"
                     />
                     <span>USD</span>
                   </div>
@@ -146,7 +146,7 @@ export default function ROIPlan() {
                     <div className="text-sm">Total Profit</div>
                     <div className="text-2xl  font-bold">{totalProfit.toFixed(2)} USD</div>
                   </div>
-                  <Button className="w-full bg-[#686762] text-black hover:bg-[#FFD700]/90">
+                  <Button className="w-full bg-[#FFD700] text-black hover:bg-[#FFD700]/70 transition-all duration-500 ease-in-out">
                     Invest Now
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>

@@ -53,10 +53,10 @@ const logos = [
 
 const LogoClouds = () => {
   return (
-    <section className="py-5 w-full overflow-hidden">
+    <section className="py-5 w-full overflow-hidden bg-gray-300 text-black">
       <div className="container mx-auto flex flex-col items-center text-center">
         <h1 className="my-6 text-pretty text-xl font-bold sm:text-2xl md:text-3xl lg:text-4xl">
-          Trusted by these companies
+          Our Partners
         </h1>
       </div>
 

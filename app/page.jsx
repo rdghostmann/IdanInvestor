@@ -20,8 +20,9 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between">
       <CoinPriceMarqueeWidget />
       <Hero1 />
-      <LogoClouds />
       <Stats />
+
+      <LogoClouds />
       <AboutInvestJar />
       <OurAmazingFeatures2 />
       {/* <OurAmazingFeatures /> */}
