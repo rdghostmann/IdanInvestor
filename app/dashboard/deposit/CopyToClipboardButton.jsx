@@ -20,7 +20,7 @@ const CopyToClipboardButton = ({ text }) => {
   return (
     <div>
       <button onClick={handleCopyClick}>
-        {isCopied ? <ClipboardCheck /> : <Clipboard />}
+        {isCopied ? <ClipboardCheck  className='text-purple-600'/> : <Clipboard />}
       </button>
     </div>
   );

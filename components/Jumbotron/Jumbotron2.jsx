@@ -9,6 +9,7 @@ import Image from 'next/image';
 
 const Hero1 = () => {
   return (
+<<<<<<< HEAD
     <section className="py-10 px-7 bg-gradient-to-br from-[#010103] to-[#3b0930] w-full">
       <div className="container">
         <div className="grid items-center gap-8 lg:grid-cols-2">
@@ -23,6 +24,22 @@ const Hero1 = () => {
               </AnimatedShinyText>
             </div>
             <h1 className="my-6 text-pretty text-white text-4xl font-bold lg:text-6xl">
+=======
+    <section className="py-10 px-7">
+      <div className="w-fit mx-auto relative text-center rounded-full px-2 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+        <AnimatedShinyText className="w-fit inline-flex items-center justify-center px-3 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+          <span>✨ Announcing InvestJar.</span>
+          <Link href="#" className="font-semibold ml-2 text-indigo-900">
+            <span aria-hidden="true" className="absolute inset-0" />
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </AnimatedShinyText>
+      </div>
+      <div className="container">
+        <div className="grid items-center gap-8 lg:grid-cols-2">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+            <h1 className="my-6 text-pretty text-blue-700 text-4xl font-bold lg:text-6xl">
+>>>>>>> 86dc44831cf7bd13ed98af656f5bfd343a23a2a6
               Invest at the perfect time
             </h1>
             <p className="mb-8 max-w-xl text-gray-300 lg:text-xl">
@@ -38,7 +55,11 @@ const Hero1 = () => {
               </Button>
             </div>
           </div>
+<<<<<<< HEAD
           <div className='border-2  overflow-hidden  rounded-md w-full '>
+=======
+          {/* <div className='bg-slate-400 max-h-96 p-4 rounded-md '>
+>>>>>>> 86dc44831cf7bd13ed98af656f5bfd343a23a2a6
             <Image
               src={earth}
               alt="hero-img"
@@ -46,12 +67,12 @@ const Hero1 = () => {
               height={764}
               className="animate-pulse border-2 border-red-500  rounded-md object-cover"
             />
-          </div>
-          {/* <img
+          </div> */}
+          <img
             src="https://shadcnblocks.com/images/block/placeholder-1.svg"
             alt="placeholder hero"
             className="max-h-96 w-full rounded-md object-cover"
-          /> */}
+          />
         </div>
       </div>
     </section>

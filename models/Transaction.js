@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const TransactionSchema = new mongoose.Schema(
   {
-    user: {
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true
@@ -16,11 +16,6 @@ const TransactionSchema = new mongoose.Schema(
       type: Number,
       required: true
     },
-    asset: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Asset",
-      required: true
-    }, // Asset type
     status: {
       type: String,
       enum: ["pending", "approved", "declined"],

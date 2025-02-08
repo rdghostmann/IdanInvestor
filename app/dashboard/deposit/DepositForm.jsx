@@ -98,12 +98,12 @@ export default function DepositForm({ userId, assets }) {
           <PopoverContent className="p-4 text-sm bg-white rounded-lg shadow-md">
             <h2 className="mb-4">Upload Proof of Deposit</h2>
             {selectedAsset && (
-              <UploadDeposit
-                userId={userId}
-                assetId={selectedAsset._id}
-                amount={amount}
-                onClose={() => setShowUploadPopup(false)}
-              />
+             <UploadDeposit
+             userId={userId}
+             amount={amount}
+             assetId={selectedAsset._id} // Added assetId to send with the upload request
+           />
+           
             )}
           </PopoverContent>
         </Popover>
