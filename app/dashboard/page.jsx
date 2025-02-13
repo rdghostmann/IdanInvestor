@@ -109,7 +109,7 @@ export default function Page() {
 
               </div>
             </div>
-            <CryptoList />
+            {/* <CryptoList /> */}
 
             {/* Portfolio Stats */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 bg-white shadow-md p-4 rounded-lg">

@@ -39,7 +39,7 @@ export function NavUser() {
   const userName = user?.username || "Guest";
   const userEmail = user?.email || "No Email";
   const userRole = user?.role || "User"; // Ensure role is available in session
-  const userAvatar = user?.avatar || "/default-avatar.png"; // Fallback avatar
+  const userAvatar = user?.avatar || "" ; // Fallback avatar
 
   return (
     <SidebarMenu>

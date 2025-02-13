@@ -43,11 +43,11 @@ import {
 
 
 const data = {
-  user: {
-    name: "IDAN",
-    email: "idan@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
+  // user: {
+  //   name: "IDAN",
+  //   email: "idan@example.com",
+  //   avatar: "/avatars/shadcn.jpg",
+  // },
   navMain: [
    
     {
@@ -155,7 +155,7 @@ export function AppSidebar({
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser  />
       </SidebarFooter>
     </Sidebar>)
   );

@@ -38,7 +38,7 @@ const Hero1 = () => {
               </Button>
             </div>
           </div>
-          <div className='bg-slate-400 max-h-96 p-4 rounded-md '>
+          {/* <div className='bg-slate-400 max-h-96 p-4 rounded-md '>
             <Image
               src={earth}
               alt="hero-img"
@@ -46,12 +46,12 @@ const Hero1 = () => {
               height={300}
               className="animate-pulse w-full mix-blend-color-dodge rounded-md object-contain"
             />
-          </div>
-          {/* <img
+          </div> */}
+          <img
             src="https://shadcnblocks.com/images/block/placeholder-1.svg"
             alt="placeholder hero"
             className="max-h-96 w-full rounded-md object-cover"
-          /> */}
+          />
         </div>
       </div>
     </section>

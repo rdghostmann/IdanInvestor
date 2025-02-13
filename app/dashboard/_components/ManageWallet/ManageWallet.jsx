@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import { Loader2 } from "lucide-react"
+import { VisuallyHidden } from "@reach/visually-hidden"
 
 
 const cryptocurrencies = [
@@ -96,7 +97,7 @@ const CryptoCard = ({ crypto, onClick }) => (
       <Image
         src={crypto.path || "/placeholder.svg"}
         alt={crypto.alt}
-        
+
         className="rounded-full"
       />
     </div>
@@ -188,10 +189,14 @@ export const ManageWallet = () => {
       </div>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent aria-describedby="wallet-dialog-description">
           <DialogHeader>
-            <DialogTitle>Add Asset</DialogTitle>
+            <VisuallyHidden>
+              <DialogTitle>Add Asset</DialogTitle>
+            </VisuallyHidden>
           </DialogHeader>
+        </DialogContent>
+        <DialogContent className="sm:max-w-[425px]" aria-describedby="wallet-dialog-description">
           {selectedCrypto && (
             <div className="grid gap-4 py-4">
               <div className="flex items-center justify-center">
@@ -229,7 +234,7 @@ export const ManageWallet = () => {
       </Dialog>
 
       <Dialog open={isConnectModalOpen} onOpenChange={setIsConnectModalOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px]" aria-describedby="wallet-dialog-description">
           {isLoading ? (
             <div className="flex items-center justify-center h-64">
               <Loader2 className="h-8 w-8 animate-spin" />

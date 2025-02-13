@@ -7,24 +7,18 @@ const DepositSchema = new mongoose.Schema(
       ref: 'User',
       required: true
     },
-    asset: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Asset',
-      required: true
+    assetId: { 
+      type: String,
+      required: true,
     },
     amount: {
       type: Number,
       required: true
     },
-    symbol: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Asset',
-      required: true
-    },
     proofOfDeposit: {
       type: String,
       required: true
-    }, // Vercel Blob Storage URL
+    },
     status: {
       type: String,
       enum: ['pending', 'approved', 'declined'], 
@@ -33,5 +27,6 @@ const DepositSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
 
 export default mongoose.models.Deposit || mongoose.model('Deposit', DepositSchema);
