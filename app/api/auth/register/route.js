@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import User from "@/models/User";
+import { connectToDB } from "@/lib/connectDB";
 
 export async function POST(req) {
   try {
