@@ -14,6 +14,7 @@ const plans = [
 ]
 
 export default function ROIPlan() {
+  
   const [selectedPlan, setSelectedPlan] = useState(plans[0])
   const [amount, setAmount] = useState(selectedPlan.minInvest)
 
@@ -120,7 +121,7 @@ export default function ROIPlan() {
                       type="number"
                       value={amount}
                       onChange={(e) => setAmount(Number(e.target.value))}
-                      className="bg-white border-[#2C1810]"
+                      className="bg-white text-black border-[#2C1810]"
                     />
                     <span>USD</span>
                   </div>
@@ -146,7 +147,7 @@ export default function ROIPlan() {
                     <div className="text-sm">Total Profit</div>
                     <div className="text-2xl  font-bold">{totalProfit.toFixed(2)} USD</div>
                   </div>
-                  <Button className="w-full bg-[#686762] text-black hover:bg-[#FFD700]/90">
+                  <Button className="w-full text-black bg-[#FFD700] bg-[#FFD700]/60">
                     Invest Now
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>

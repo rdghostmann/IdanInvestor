@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
+import SessionProviderWrapper from "../SessionProviderWrapper";
+import Loading from "../loading";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -11,11 +13,11 @@ export const metadata = {
 
 export default async function DashboardLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning >
       <body className={inter.className} suppressHydrationWarning>
-        <Suspense fallback={<div>Loading...</div>}>
-          {children}
-        </Suspense>
+        {/* <Suspense fallback={<Loading />}> */}
+          <SessionProviderWrapper suppressHydrationWarning>{children}</SessionProviderWrapper>
+        {/* </Suspense> */}
       </body>
     </html>
   );

@@ -1,7 +1,5 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import SessionProviderWrapper from "./SessionProviderWrapper";
-import { getServerSession } from "next-auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,12 +9,11 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession(); // Fetch session on the server
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={inter.className} suppressHydrationWarning>
-        <SessionProviderWrapper >{children}</SessionProviderWrapper>
+        {children}
       </body>
     </html>
   );

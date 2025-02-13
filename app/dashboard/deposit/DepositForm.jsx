@@ -31,16 +31,17 @@ export default function DepositForm({ assets }) {
       return;
     }
 
+    setLoading(true);
     setUploading(true);
     const formData = new FormData();
     formData.append("file", inputFileRef.current.files[0]);
     formData.append("assetId", selectedAsset?.name);
     formData.append("amount", amount);
 
-    console.log("FormData entries:");
-    for (let [key, value] of formData.entries()) {
-      console.log(key, value);
-    }
+    // console.log("FormData entries:");
+    // for (let [key, value] of formData.entries()) {
+    //   console.log(key, value);
+    // }
 
     const response = await depositUpload(formData);
     
@@ -52,6 +53,7 @@ export default function DepositForm({ assets }) {
       toast.error(response.error || "Upload failed. Try again.");
     }
 
+    setLoading(true);
     setUploading(false);
   };
 

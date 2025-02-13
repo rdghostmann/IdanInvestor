@@ -8,6 +8,7 @@ import Image from 'next/image';
 
 
 const Hero1 = () => {
+
   return (
     <section className="py-10 px-7">
       <div className="container">
@@ -56,6 +57,7 @@ const Hero1 = () => {
       </div>
     </section>
   );
+  
 };
 
 export default Hero1;
