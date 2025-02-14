@@ -2,8 +2,8 @@
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
 import { Loader } from "lucide-react";
+import { useState } from "react";
 
 
 const LoadingScreen = ({ isLoading }) => {
