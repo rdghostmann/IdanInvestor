@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useState , useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -44,11 +44,12 @@ const InvestForm = () => {
     setLoading(true);
 
     const payload = {
-      userId: session.user.id,
+      investId: session.user._id || session.user.id, // Ensure the correct user ID is used
       planName: selectedPlan.type,
       amount,
       profit: ((amount * selectedPlan.roi) / 100).toFixed(2),
     };
+    
 
     const response = await investAmount(payload);
 
@@ -147,32 +148,14 @@ const InvestForm = () => {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <div className="lg:col-span-3 space-y-6">
               <div>
-                <p className="text-lg font-medium">Choose Plan:</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {plans.map((plan) => (
-                    <Button
-                      key={plan.type}
-                      onClick={() => handlePlanSelect(plan)}
-                      variant={selectedPlan.type === plan.type ? "default" : "outline"}
-                      className={
-                        selectedPlan.type === plan.type
-                          ? "bg-gradient-to-br from-[#07071a] border-2 focus:border-[#FFF] to-[#2c0323] text-white"
-                          : "border-[#2C1810] text-[#2C1810]"
-                      }
-                    >
-                      {plan.type.charAt(0).toUpperCase() + plan.type.slice(1)} Plan
-                    </Button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
                 <Label htmlFor="amount" className="text-lg font-medium">Enter Amount:</Label>
                 <div className="flex items-center gap-4 mt-2">
                   <Input
                     type="number"
                     id="amount"
                     name="number"
+                    min="20"
+                    max={balance}
                     value={amount}
                     onChange={(e) => setAmount(Number(e.target.value))}
                     className="bg-white text-black border-[#2C1810]"

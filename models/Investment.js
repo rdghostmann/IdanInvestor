@@ -2,10 +2,23 @@ import mongoose from "mongoose";
 
 const InvestmentSchema = new mongoose.Schema(
   {
-    investId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    planName: { type: String, required: true },
-    amount: { type: Number, required: true },
-    profit: { type: Number, required: true },
+    investId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true
+    },
+    planName: {
+      type: String,
+      required: true
+    },
+    amount: {
+      type: Number,
+      required: true
+    },
+    profit: {
+      type: Number,
+      required: true
+    },
   },
   { timestamps: true }
 );
