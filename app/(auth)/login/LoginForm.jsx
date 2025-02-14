@@ -3,20 +3,41 @@ import { signIn } from "next-auth/react";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useState } from "react";
+
+
+const LoadingScreen = ({ isLoading }) => {
+  if (!isLoading) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="flex flex-col items-center">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-indigo-500 border-solid"></div>
+        <p className="text-white mt-4 text-lg font-semibold">Registering...</p>
+      </div>
+    </div>
+  );
+};
 
 export default function LoginForm() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true); // Show loading screen
 
     const formData = new FormData(event.currentTarget);
     const email = formData.get("email");
     const password = formData.get("password");
 
     if (!email || !password) {
+      setIsLoading(false);
       return Swal.fire("Error", "Email and password are required", "error");
     }
+
+    setIsLoading(true);
 
     try {
       const result = await signIn("credentials", {
@@ -24,23 +45,27 @@ export default function LoginForm() {
         password,
         redirect: false,
       });
+      setIsLoading(false); // Hide loading screen
 
       if (result?.error) {
+        setIsLoading(false); // Hide loading screen
         Swal.fire("Error", result.error, "error");
       } else {
+        setIsLoading(false); // Hide loading screen
         Swal.fire("Success", "Login successful", "success").then(() => {
           router.push("/dashboard"); // Redirect to dashboard on success
         });
       }
     } catch (error) {
+      setIsLoading(false);
       Swal.fire("Error", "An error occurred. Please try again.", "error");
     }
   };
 
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <LoadingScreen isLoading={isLoading} />
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img className="mx-auto h-10 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
         <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your account</h2>
       </div>
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
