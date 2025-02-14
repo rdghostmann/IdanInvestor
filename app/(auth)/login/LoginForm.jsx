@@ -40,8 +40,6 @@ export default function LoginForm() {
       return Swal.fire("Error", "Email and password are required", "error");
     }
 
-    setIsLoading(true);
-
     try {
       const result = await signIn("credentials", {
         email,
