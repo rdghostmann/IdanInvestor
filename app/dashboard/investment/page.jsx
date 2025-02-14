@@ -13,9 +13,20 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import InvestForm from "./InvestForm";
 
-export default function Page() {
+import { getUserFromSession, getUserBalance } from "@/lib/actions";
+import { getServerSession } from "next-auth";
+
+import InvestForm from "./InvestForm";
+import Investment from "./Investment";
+
+export default async function Page() {
+  const session = await getServerSession();
+  if (!session?.user?.email) return <p>Please log in to invest.</p>;
+
+  const user = await getUserFromSession();
+  const { balance } = await getUserBalance(session.user.email);
+
   return (
     (<SidebarProvider>
       <AppSidebar />
@@ -44,7 +55,7 @@ export default function Page() {
             <h2 className="text-purple-600 font-bold text-xl">Investment Plans</h2>
             <p className="text-slate-700">Investment that Guarantee Wealth</p>
           </div>
-          <InvestForm />
+          <InvestForm user={user} balance={balance} />
         </div>
       </SidebarInset>
     </SidebarProvider>)

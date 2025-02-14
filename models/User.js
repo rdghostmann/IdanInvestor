@@ -35,6 +35,10 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  profitTotal: {
+    type: Number,
+    default: 0
+  },
   assets: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -45,7 +49,7 @@ const UserSchema = new mongoose.Schema({
   plan: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Invest",
+      ref: "Investment",
       default: null
     }
   ], // References selected investment plan

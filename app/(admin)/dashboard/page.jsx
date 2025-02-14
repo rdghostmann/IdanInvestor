@@ -13,14 +13,12 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import Watchlist from "./_components/WatchList/WatchList";
 import { ArrowUpRight } from "lucide-react";
 
 
 import { getUserFromSession, getUserBalance } from "@/lib/actions";
 import { getServerSession } from "next-auth";
 
-import CryptoList from "@/components/CryptoList/CryptoList";
 
 
 export default async function Page() {
@@ -157,8 +155,6 @@ export default async function Page() {
                 </div>
               </div>
               <div className="bg-white shadow-md p-4 rounded-lg">
-                {/* Watchlist */}
-                <Watchlist />
               </div>
             </div>
 

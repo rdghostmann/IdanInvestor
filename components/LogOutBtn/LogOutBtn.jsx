@@ -12,7 +12,7 @@ export default function LogOutBtn() {
   };
 
   return (
-    <button varia onClick={handleLogout} className="py-2 w-full text-left text-red-500 font-medium rounded">
+    <button onClick={handleLogout} className="py-2 w-full text-left text-red-500 font-medium rounded">
       Logout
     </button>
   );

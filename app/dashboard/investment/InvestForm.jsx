@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Slider } from "@/components/ui/slider"
 import { ArrowRight, Award } from "lucide-react"
 import { Label } from '@/components/ui/label';
-import { investAmount } from "@/lib/actions";
-import { getUserBalance } from "@/lib/actions"; // Fetch balance
-import { useSession } from "next-auth/react";
-
+import { investAmount } from '@/lib/actions';
+import Loading from '@/app/loading';
+import LoadingScreen from '@/app/(auth)/loading';
+import { useRouter } from 'next/navigation';
 
 
 const plans = [
@@ -20,22 +20,28 @@ const plans = [
 ]
 
 
-const InvestForm = () => {
-  const { data: session } = useSession();
-  const [balance, setBalance] = useState(0);
+const InvestForm = ({ user, balance }) => {
+  const [userId] = useState(user?.id || null);
   const [selectedPlan, setSelectedPlan] = useState(plans[0]);
   const [amount, setAmount] = useState(selectedPlan.minInvest);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (session?.user?.email) {
-      getUserBalance(session.user.email).then((res) => {
-        setBalance(res.balance);
-      });
-    }
-  }, [session]);
+  const router = useRouter();
+  
+  const dailyProfit = (amount * selectedPlan.roi) / (100 * 30)
+  const totalProfit = dailyProfit * 30
 
-  const handleInvest = async () => {
+  const handleInvest = async (event) => {
+    event.preventDefault();
+
+    if (!userId) {
+      alert("User not found.");
+      return;
+    }
+    if (amount < 100) {
+      alert("Invalid investment amount");
+      return;
+    }
     if (amount > balance) {
       alert("Insufficient balance");
       return;
@@ -44,17 +50,18 @@ const InvestForm = () => {
     setLoading(true);
 
     const payload = {
-      investId: session.user._id || session.user.id, // Ensure the correct user ID is used
+      investId: userId, // Ensure the correct user ID is used
       planName: selectedPlan.type,
       amount,
       profit: ((amount * selectedPlan.roi) / 100).toFixed(2),
     };
-    
 
+
+    console.log("Payload:", payload)
     const response = await investAmount(payload);
 
     if (response.success) {
-      alert("Investment successful");
+      router.push("/dashboard") // Correct
     } else {
       alert("Investment failed");
     }
@@ -62,15 +69,20 @@ const InvestForm = () => {
     setLoading(false);
   };
 
-   const handleAmountChange = (value) => {
+  const handleAmountChange = (value) => {
     setAmount(value[0])
   }
 
-  const dailyProfit = (amount * selectedPlan.roi) / (100 * 30)
-  const totalProfit = dailyProfit * 30
+  const handlePlanSelection = (plan) => {
+    setSelectedPlan(plan);
+    setAmount(plan.minInvest); // Reset amount when plan changes
+  };
+
+  
 
   return (
-    <form className="container mx-auto">
+    <form onSubmit={handleInvest} className="container mx-auto">
+      {loading && <Loading />}
       {/*Fetch Users Balance */}
       <div className="w-full p-3 mb-6">
         <Label htmlFor="current-balance" className="text-sm text-gray-500">Current Balance</Label>
@@ -88,13 +100,15 @@ const InvestForm = () => {
       {/* Investment Plans */}
       <div className="py-3 overflow-x-auto grid grid-col-1 gap-6 md:overflow-visible">
         {plans.map((plan) => (
-          <Card key={plan.type}
+          <Card
+            key={plan.type}
             className={`relative overflow-hidden snap-center shrink-0 w-[90%] mx-auto  ${plan.type === "gold"
               ? "bg-[#FFD700]/10 bg-gradient-to-r from-[#FFD700] to-[#B8860B] text-black"
               : plan.type === "silver"
                 ? "bg-[#C0C0C0]/10 bg-gradient-to-r from-[#C0C0C0] to-[#A9A9A9]"
                 : "bg-gradient-to-r from-[#CD7F32] to-[#8B4513] border-[#CD7F32]"
               } border-2`}
+            onClick={() => handlePlanSelection(plan)}
           >
             <CardHeader className="flex items-center pb-2">
               <div
