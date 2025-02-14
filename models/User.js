@@ -45,7 +45,7 @@ const UserSchema = new mongoose.Schema({
   plan: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "InvestmentPlan",
+      ref: "Invest",
       default: null
     }
   ], // References selected investment plan

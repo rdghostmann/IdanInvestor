@@ -4,6 +4,9 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 
 const LoadingScreen = ({ isLoading }) => {
@@ -72,11 +75,12 @@ export default function LoginForm() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">Email address</label>
+            <Label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">Email address</Label>
             <div className="mt-2">
-              <input
+              <Input
                 type="email"
                 name="email"
+                id="email"
                 placeholder="Email"
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 autoComplete="email"
@@ -87,15 +91,16 @@ export default function LoginForm() {
 
           <div>
             <div className="flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">Password</label>
+              <Label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">Password</Label>
               <div className="text-sm">
                 <Link href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</Link>
               </div>
             </div>
             <div className="mt-2">
-              <input
+              <Input
                 type="password"
                 name="password"
+                id="password"
                 placeholder="Password"
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 required
@@ -105,9 +110,9 @@ export default function LoginForm() {
 
 
           <div>
-            <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-              Login
-            </button>
+            <Button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            {isLoading ? <Loader className="text-white animate-spin size-1" /> : "Register"}
+            </Button>
           </div>
         </form>
 

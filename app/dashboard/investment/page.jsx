@@ -39,8 +39,8 @@ export default function Page() {
             </Breadcrumb>
           </div>
         </header>
-        <div className="border w-full flex flex-col gap-4 p-4 pt-0">
-          <div className="text-sm/5 mb-2 bg-white p-2 shadow-md rounded-lg">
+        <div className="w-full flex flex-col gap-4 p-4 pt-0">
+          <div className="text-sm/5 mb-2 bg-white p-3 shadow-md rounded-lg">
             <h2 className="text-purple-600 font-bold text-xl">Investment Plans</h2>
             <p className="text-slate-700">Investment that Guarantee Wealth</p>
           </div>

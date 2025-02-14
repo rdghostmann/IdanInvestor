@@ -23,7 +23,6 @@ const handlers = NextAuth({
           const user = await User.findOne({ email: credentials.email });
 
           if (!user) {
-            console.error("User not found:", credentials.email);
             throw new Error("User not found");
           }
 
@@ -53,8 +52,7 @@ const handlers = NextAuth({
           // };
 
         } catch (error) {
-          console.error("Error during authorization:", error);
-          throw new Error("Authorization failed");
+          throw new Error("Authorization failed" , error);
         }
       },
     }),

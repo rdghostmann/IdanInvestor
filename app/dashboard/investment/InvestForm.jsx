@@ -1,4 +1,5 @@
 "use client";
+
 import React from 'react'
 import { useState } from "react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
@@ -7,6 +8,10 @@ import { Input } from "@/components/ui/input"
 import { Slider } from "@/components/ui/slider"
 import { ArrowRight, Award } from "lucide-react"
 import { Label } from '@/components/ui/label';
+import { investAmount } from "@/lib/actions";
+import { getUserBalance } from "@/lib/actions"; // Fetch balance
+import { useSession } from "next-auth/react";
+
 
 
 const plans = [
@@ -17,8 +22,45 @@ const plans = [
 
 
 const InvestForm = () => {
-  const [selectedPlan, setSelectedPlan] = useState(plans[0])
-  const [amount, setAmount] = useState(selectedPlan.minInvest)
+  const { data: session } = useSession();
+  const [balance, setBalance] = useState(0);
+  const [selectedPlan, setSelectedPlan] = useState(plans[0]);
+  const [amount, setAmount] = useState(selectedPlan.minInvest);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (session?.user?.email) {
+      getUserBalance(session.user.email).then((res) => {
+        setBalance(res.balance);
+      });
+    }
+  }, [session]);
+
+  const handleInvest = async () => {
+    if (amount > balance) {
+      alert("Insufficient balance");
+      return;
+    }
+
+    setLoading(true);
+
+    const payload = {
+      userId: session.user.id,
+      planName: selectedPlan.type,
+      amount,
+      profit: ((amount * selectedPlan.roi) / 100).toFixed(2),
+    };
+
+    const response = await investAmount(payload);
+
+    if (response.success) {
+      alert("Investment successful");
+    } else {
+      alert("Investment failed");
+    }
+
+    setLoading(false);
+  };
 
   const handlePlanSelect = (plan) => {
     setSelectedPlan(plan)
@@ -33,21 +75,24 @@ const InvestForm = () => {
   const totalProfit = dailyProfit * 30
 
   return (
-    <div className="container mx-auto">
-      <div className="w-full mb-6">
+    <form className="container mx-auto">
+      {/*Fetch Users Balance */}
+      <div className="w-full p-3 mb-6">
         <Label htmlFor="current-balance" className="text-sm text-gray-500">Current Balance</Label>
         <Input
           placeholder="$0"
           type="number"
           id="current-balance"
           name="current-balance"
-          className="border-none bg-transparent p-2 rounded w-full"
+          className="border-none bg-transparent p-3 rounded w-full"
+          value={balance}
           disabled
         />
       </div>
+
       {/* Investment Plans */}
       <div className="py-3 overflow-x-auto grid grid-col-1 gap-6 md:overflow-visible">
-      {plans.map((plan) => (
+        {plans.map((plan) => (
           <Card key={plan.type}
             className={`relative overflow-hidden snap-center shrink-0 w-[90%] mx-auto  ${plan.type === "gold"
               ? "bg-[#FFD700]/10 bg-gradient-to-r from-[#FFD700] to-[#B8860B] text-black"
@@ -157,8 +202,8 @@ const InvestForm = () => {
                   <div className="text-sm">Total Profit</div>
                   <div className="text-2xl  font-bold">{totalProfit.toFixed(2)} USD</div>
                 </div>
-                <Button type="submit" className="w-full text-black bg-[#FFD700] bg-[#FFD700]/60">
-                  Invest Now
+                <Button onClick={handleInvest} disabled={loading} type="submit" className="w-full text-black bg-[#FFD700]">
+                  {loading ? "Processing..." : "Invest Now"}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -166,7 +211,7 @@ const InvestForm = () => {
           </div>
         </CardContent>
       </Card>
-    </div>
+    </form>
 
 
 
