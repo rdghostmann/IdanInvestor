@@ -62,12 +62,7 @@ const InvestForm = () => {
     setLoading(false);
   };
 
-  const handlePlanSelect = (plan) => {
-    setSelectedPlan(plan)
-    setAmount(plan.minInvest)
-  }
-
-  const handleAmountChange = (value) => {
+   const handleAmountChange = (value) => {
     setAmount(value[0])
   }
 
