@@ -13,6 +13,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import InvestForm from "./InvestForm";
 
 export default function Page() {
   return (
@@ -38,52 +39,12 @@ export default function Page() {
             </Breadcrumb>
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="text-sm/5 mb-2 bg-white shadow-md p-4 rounded-lg">            <h2 className="text-purple-600 font-bold text-xl">Investment Plans</h2>
+        <div className="border w-full flex flex-col gap-4 p-4 pt-0">
+          <div className="text-sm/5 mb-2 bg-white p-2 shadow-md rounded-lg">
+            <h2 className="text-purple-600 font-bold text-xl">Investment Plans</h2>
             <p className="text-slate-700">Investment that Guarantee Wealth</p>
           </div>
-
-          <div className="w-full lg:w-1/3 space-y-6 basis-0">
-            <div className="mb-2 bg-white shadow-md p-4 rounded-lg">
-              <div className="space-y-4">
-                <div className="flex flex-wrap justify-between items-center bg-gray-50 p-4 rounded-lg">
-                  <div className="w-full">
-                    <p className="text-sm text-gray-500">Current Balance</p>
-                    <input
-                      placeholder="$0"
-                      type="number"
-                      className="bg-transparent p-2 rounded w-full"
-                      disabled
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-wrap justify-between items-center bg-gray-50 p-4 rounded-lg">
-                  <div className="w-full">
-                    <p className="text-sm text-gray-500">Select Investment Plan:</p>
-                    <select className="bg-transparent p-2 rounded w-full">
-                      <option>Plan 1</option>
-                      <option>Plan 2</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="flex flex-wrap justify-between items-center bg-gray-50 p-4 rounded-lg">
-                  <div className="w-full">
-                    <p className="text-sm text-gray-500">Current Balance</p>
-                    <input
-                      placeholder="Enter Investment Amount Here"
-                      type="number"
-                      className="bg-transparent p-2 rounded w-full"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Buy Button */}
-              <button className="w-full bg-purple-600 text-white font-medium py-3 rounded-lg mt-6">
-                Proceed
-              </button>
-            </div>
-          </div>
+          <InvestForm />
         </div>
       </SidebarInset>
     </SidebarProvider>)
