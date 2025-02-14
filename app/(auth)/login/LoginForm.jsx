@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
+import { Loader  from 'lucide-react
 
 const LoadingScreen = ({ isLoading }) => {
   if (!isLoading) return null;
@@ -39,8 +39,6 @@ export default function LoginForm() {
       setIsLoading(false);
       return Swal.fire("Error", "Email and password are required", "error");
     }
-
-    setIsLoading(true);
 
     try {
       const result = await signIn("credentials", {
