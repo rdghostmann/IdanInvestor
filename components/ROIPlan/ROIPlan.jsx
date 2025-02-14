@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Slider } from "@/components/ui/slider"
 import { ArrowRight, Award } from "lucide-react"
+import Link from "next/link"
 
 const plans = [
   { type: "gold", roi: 120, minInvest: 500, maxInvest: 5000, medal: 1 },
@@ -147,10 +148,10 @@ export default function ROIPlan() {
                     <div className="text-sm">Total Profit</div>
                     <div className="text-2xl  font-bold">{totalProfit.toFixed(2)} USD</div>
                   </div>
-                  <Button className="w-full text-black bg-[#FFD700] bg-[#FFD700]/60">
+                  <Link href="/dashboard/investment" className="w-full text-black bg-[#FFD700] bg-[#FFD700]/60">
                     Invest Now
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  </Link>
                 </div>
               </div>
             </div>
