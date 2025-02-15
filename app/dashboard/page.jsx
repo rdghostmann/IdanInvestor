@@ -57,6 +57,42 @@ export default async function Page() {
           {/* Left Section */}
           <div className="flex-1 space-y-6 basis-0">
             {/* Portfolio Overview */}
+            <Card className="bg-gradient-to-br from-amber-800 to-amber-900 text-white p-6 rounded-lg shadow-xl">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+                  <Image src="/placeholder.svg" alt="User avatar" width={40} height={40} className="rounded-full" />
+                </div>
+                <div>
+                  <h3 className="font-semibold">Harry Shaw</h3>
+                  <p className="text-sm text-amber-200">ID: 12780</p>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <p className="text-sm text-amber-200">Your Balance</p>
+                <p className="text-3xl font-bold">$1516.00</p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <button className="bg-amber-400 text-amber-900 px-4 py-2 rounded-lg font-medium hover:bg-amber-300 transition-colors">
+                  Make a Deposit
+                </button>
+                <button className="bg-amber-700 text-amber-100 px-4 py-2 rounded-lg font-medium hover:bg-amber-600 transition-colors">
+                  Withdraw Funds
+                </button>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {["$5789.00", "$2500.00", "$7000.00", "$7000.00"].map((amount, index) => (
+                  <div key={index} className="bg-amber-800/50 p-3 rounded-lg">
+                    <p className="text-lg font-semibold">{amount}</p>
+                    <p className="text-xs text-amber-200">
+                      {["Active Deposits", "Earn Total", "Total Deposits", "Total Withdraw"][index]}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </Card>
             <div className="flex justify-between bg-white shadow-md p-4 rounded-lg">
               <div className="border-r-2 flex-1 p-2 w-1/2 lg:px-2">
                 <p className="text-sm/8 text-gray-500">ACCOUNT BALANCE</p>
