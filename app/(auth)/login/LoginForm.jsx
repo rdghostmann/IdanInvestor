@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Loader } from "lucide-react";
 
 const LoadingScreen = ({ isLoading }) => {
   if (!isLoading) return null;
@@ -45,9 +46,9 @@ export default function LoginForm() {
         password,
         redirect: false,
       });
+      setIsLoading(false); // Hide loading screen
 
       if (result?.error) {
-        setIsLoading(false); // Hide loading screen
         Swal.fire("Error", result.error, "error");
       } else {
         Swal.fire("Success", "Login successful", "success").then(() => {
@@ -56,6 +57,8 @@ export default function LoginForm() {
       }
     } catch (error) {
       Swal.fire("Error", "An error occurred. Please try again.", "error");
+    } finally {
+      setIsLoading(false); // Hide loading screen
     }
   };
 
@@ -102,10 +105,9 @@ export default function LoginForm() {
             </div>
           </div>
 
-
           <div>
             <Button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-            {isLoading ? "Processing..: "Register"}
+              {isLoading ? "Registering..." : "Submit"}
             </Button>
           </div>
         </form>
