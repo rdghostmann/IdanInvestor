@@ -46,19 +46,16 @@ export default function LoginForm() {
         password,
         redirect: false,
       });
-      setIsLoading(false); // Hide loading screen
 
       if (result?.error) {
         setIsLoading(false); // Hide loading screen
         Swal.fire("Error", result.error, "error");
       } else {
-        setIsLoading(false); // Hide loading screen
         Swal.fire("Success", "Login successful", "success").then(() => {
           router.push("/dashboard"); // Redirect to dashboard on success
         });
       }
     } catch (error) {
-      setIsLoading(false);
       Swal.fire("Error", "An error occurred. Please try again.", "error");
     }
   };
@@ -109,7 +106,7 @@ export default function LoginForm() {
 
           <div>
             <Button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-            {isLoading ? <Loader className="text-white animate-spin size-1" /> : "Register"}
+            {isLoading ? "Processing..: "Register"}
             </Button>
           </div>
         </form>
